@@ -49,7 +49,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group z-50 relative">
-           <div className="h-8 w-8 bg-[#F26207] flex items-center justify-center transform -rotate-3 group-hover:rotate-0 transition-transform">
+           <div className="h-8 w-8 bg-[#F26207] flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform">
              <span className="font-bold text-black font-mono text-lg">AK</span>
            </div>
            <span className="font-bold text-white text-xl tracking-tight font-mono group-hover:text-[#F26207] transition-colors uppercase">

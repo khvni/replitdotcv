@@ -22,7 +22,7 @@ export default function GlitchHeader({ text, className = "" }: GlitchHeaderProps
       }
       
       setPixelatedIndices(newSet);
-    }, 3500); // Drastically increased to 3500ms
+    }, 1200); // Faster but not distracting
 
     return () => clearInterval(interval);
   }, [text]);

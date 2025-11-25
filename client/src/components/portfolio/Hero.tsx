@@ -45,7 +45,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-xl text-[#AEBEC7] mb-12 max-w-2xl font-sans"
+          className="text-xl text-[#fdfdfd] mb-12 max-w-2xl font-sans"
         >
           Ali Khani. 1800+ students taught. 30+ chapters built. Zero fluff.
         </motion.p>
@@ -116,7 +116,7 @@ export default function Hero() {
                 href={logo.url} 
                 target="_blank" 
                 rel="noreferrer"
-                className="text-[#AEBEC7] hover:text-white transition-colors font-medium text-sm md:text-base flex items-center gap-2 font-mono"
+                className="text-[#fdfdfd] hover:text-[#f9c041] transition-colors font-medium text-sm md:text-base flex items-center gap-2 font-mono"
               >
                 {logo.name}
               </a>

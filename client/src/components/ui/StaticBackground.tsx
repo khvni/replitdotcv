@@ -50,7 +50,7 @@ export default function StaticBackground() {
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 z-10 w-full h-full opacity-10 pointer-events-none mix-blend-overlay"
+      className="absolute inset-0 z-10 w-full h-full opacity-5 pointer-events-none mix-blend-overlay"
     />
   );
 }
