@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Typewriter from "typewriter-effect";
 import StaticBackground from "../ui/StaticBackground";
+import DitherBackground from "../ui/DitherBackground";
 import GlitchHeader from "../ui/GlitchHeader";
 
 export default function Hero() {
@@ -22,7 +23,9 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-32 pb-20 bg-[#0B1419]">
-      {/* TV Static Background Effect */}
+      {/* Dither Background (Towers) */}
+      <DitherBackground />
+      {/* TV Static Background Effect (Overlay) */}
       <StaticBackground />
 
       <div className="container relative z-20 px-6 text-center max-w-7xl mx-auto flex flex-col items-center">
