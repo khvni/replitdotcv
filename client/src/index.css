@@ -24,13 +24,12 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   
-  /* Typography Update - Tech/Modern but Clean */
-  --font-display: 'Sora', sans-serif;
-  --font-pixel: 'Pixelify Sans', display;
-  --font-hack: 'Hack', monospace;
-  --font-sans: 'IBM Plex Sans', sans-serif;
+  /* Typography Update - Clean Replit Style */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Sans', monospace;
   
-  --radius: 0px;
+  --radius: 8px;
 }
 
 :root {
@@ -91,9 +90,5 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#F26207] to-[#FF8C42];
-  }
-  
-  .industrial-border {
-    @apply border border-white/10 border-l-4 border-l-[#F26207];
   }
 }
