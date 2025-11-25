@@ -37,7 +37,7 @@ export default function Hero() {
         >
           <GlitchHeader 
             text="The search for your next DevRel ends here." 
-            className="text-5xl md:text-7xl font-bold tracking-tight text-white" 
+            className="text-4xl md:text-6xl font-bold tracking-tight text-white" 
           />
         </motion.div>
 
