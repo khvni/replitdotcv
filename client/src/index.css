@@ -25,57 +25,57 @@
   --color-ring: hsl(var(--ring));
   
   --font-sans: 'Inter', sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-display: 'Inter', sans-serif; /* Replit uses a clean sans mostly */
   --font-mono: 'JetBrains Mono', monospace;
   
-  --radius: 0.5rem;
+  --radius: 0px; /* Replit design is sharp */
 }
 
 :root {
-  /* Light Theme (Clean, Educational) */
-  --background: 220 20% 98%;
-  --foreground: 224 71.4% 4.1%;
+  /* Replit Light (Approximation based on brand kit for light mode if needed, but usually dark) */
+  --background: 0 0% 100%;
+  --foreground: 210 14% 9%;
   --card: 0 0% 100%;
-  --card-foreground: 224 71.4% 4.1%;
+  --card-foreground: 210 14% 9%;
   --popover: 0 0% 100%;
-  --popover-foreground: 224 71.4% 4.1%;
-  --primary: 221 83% 53%; /* Replit Blue-ish */
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
+  --popover-foreground: 210 14% 9%;
+  --primary: 23 94% 49%; /* #F26207 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 20% 96%;
+  --secondary-foreground: 210 14% 9%;
+  --muted: 210 20% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 210 20% 96%;
+  --accent-foreground: 210 14% 9%;
+  --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 221 83% 53%;
-  --radius: 0.5rem;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 23 94% 49%;
+  --radius: 0px;
 }
 
 .dark {
-  /* Dark Theme (Developer, Cyber, Replit-Dark) */
-  --background: 224 71% 4%;
-  --foreground: 210 40% 98%;
-  --card: 222 47% 11%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222 47% 11%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 217 91% 60%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 224.3 76.3% 48%;
+  /* Replit Dark Theme from Brand Kit */
+  --background: 204 39% 7%; /* #0B1419 */
+  --foreground: 200 18% 73%; /* #AEBEC7 */
+  --card: 202 23% 14%; /* #1B252B - slightly lighter than bg for contrast */
+  --card-foreground: 200 18% 73%;
+  --popover: 204 39% 7%;
+  --popover-foreground: 200 18% 73%;
+  --primary: 23 94% 49%; /* #F26207 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 202 23% 14%; /* #1B252B */
+  --secondary-foreground: 200 18% 73%;
+  --muted: 202 23% 14%;
+  --muted-foreground: 200 10% 50%;
+  --accent: 202 23% 14%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 202 23% 14%; /* #1B252B */
+  --input: 202 23% 14%;
+  --ring: 23 94% 49%;
 }
 
 @layer base {
@@ -86,20 +86,20 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
+    @apply font-display tracking-tight text-white; /* Headings are usually white in dark mode */
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#F26207] to-[#FF8C42];
   }
   
-  .glass-card {
-    @apply bg-card/50 backdrop-blur-lg border border-white/10 shadow-xl;
+  .replit-card {
+    @apply bg-card border border-white/5 hover:border-primary/50 transition-colors duration-200;
   }
   
-  .code-block {
-    @apply font-mono bg-black/80 p-4 rounded-lg border border-white/5;
+  .replit-button {
+    @apply bg-primary text-white font-medium px-6 py-2 rounded-[4px] hover:bg-[#D95200] transition-colors duration-200 text-sm;
   }
 }

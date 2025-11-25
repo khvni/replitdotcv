@@ -1,95 +1,103 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Users, Zap, Code } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 
-const timeline = [
+const experience = [
   {
-    year: "2023 - Present",
-    title: "CS 61B Head TA @ UC Berkeley",
-    description: "Led a staff of 60+ TAs and taught Data Structures to over 1,800 students. Redesigned curriculum to focus on practical application and modern tooling.",
-    icon: GraduationCap,
-    color: "text-blue-400",
+    role: "CS 61B Head TA @ Berkeley",
+    metric: "1800+ Students",
+    detail: "Led 60+ staff. Redesigned curriculum for modern tooling. Turned abstract theory into shippable skills."
   },
   {
-    year: "2022 - Present",
-    title: "Founder @ MTC Community",
-    description: "Built a cross-university tech community spanning 30+ campuses. Organized hackathons, workshops, and career fairs connecting students with top tech companies.",
-    icon: Users,
-    color: "text-purple-400",
+    role: "Founder @ MTC",
+    metric: "30+ Universities",
+    detail: "Built a viral tech community from scratch. High-growth, high-energy, zero budget. Pure hustle."
   },
   {
-    year: "2024",
-    title: "Viral Content Creator",
-    description: "Created the 'Replit Vibe' coding workshop series, garnering 16k+ views on Twitter. Recognized by Replit engineering team for innovative use of Templates.",
-    icon: Zap,
-    color: "text-yellow-400",
-  },
-  {
-    year: "Recent Sprint",
-    title: "Template Engineer",
-    description: "Spent the last 2 weeks deep-diving into Replit's ecosystem, building high-quality templates and tutorials to lower the barrier to entry for new devs.",
-    icon: Code,
-    color: "text-green-400",
+    role: "Content Creator",
+    metric: "16k+ Views",
+    detail: "Replit-style workshops that actually get watched. I know how to capture attention in the scroll economy."
   }
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-background relative overflow-hidden">
+    <section id="experience" className="py-24 bg-[#0B1419] relative">
       <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto mb-16 text-center"
-        >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            More Than Just Code
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            I don't just build software; I build the bridges that help others build it too. 
-            My passion lies at the intersection of deep technical expertise and accessible education.
-          </p>
-        </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl font-bold mb-6 text-white">
+              High Agency. <br/>
+              <span className="text-[#F26207]">Radical Impact.</span>
+            </h2>
+            <p className="text-xl text-[#AEBEC7] mb-8 leading-relaxed">
+              I don't wait for permission to build. My track record isn't just about holding titles—it's about creating movement. 
+              I bridge the gap between complex engineering and the next generation of developers.
+            </p>
+            
+            <div className="space-y-6">
+              {experience.map((item, i) => (
+                <div key={i} className="flex gap-4 items-start group">
+                  <div className="mt-1">
+                    <CheckCircle className="w-5 h-5 text-[#F26207]" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white group-hover:text-[#F26207] transition-colors">
+                      {item.role} <span className="text-[#AEBEC7] font-normal mx-2">|</span> {item.metric}
+                    </h3>
+                    <p className="text-[#AEBEC7] text-sm mt-1">
+                      {item.detail}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
 
-        <div className="max-w-4xl mx-auto relative">
-          {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 h-full w-px bg-gradient-to-b from-blue-500/0 via-blue-500/50 to-blue-500/0 transform -translate-x-1/2 hidden md:block" />
-          
-          <div className="space-y-12">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`flex flex-col md:flex-row items-center gap-8 ${
-                  index % 2 === 0 ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                <div className="flex-1 w-full md:w-auto">
-                   <div className={`p-6 rounded-2xl border border-white/5 bg-card/30 hover:bg-card/50 transition-all duration-300 hover:border-white/10 shadow-lg backdrop-blur-sm group ${
-                     index % 2 === 0 ? "md:text-right" : "md:text-left"
-                   }`}>
-                     <div className={`flex items-center gap-3 mb-2 ${
-                        index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
-                     }`}>
-                       <item.icon className={`w-6 h-6 ${item.color}`} />
-                       <span className="font-mono text-sm text-muted-foreground">{item.year}</span>
-                     </div>
-                     <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                     <p className="text-muted-foreground">{item.description}</p>
-                   </div>
-                </div>
-                
-                <div className="relative hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-background border border-white/10 z-10 shadow-[0_0_15px_rgba(0,121,242,0.3)]">
-                  <div className={`w-3 h-3 rounded-full ${item.color.replace('text-', 'bg-')}`} />
-                </div>
-                
-                <div className="flex-1 hidden md:block" />
-              </motion.div>
-            ))}
-          </div>
+            <div className="mt-10">
+              <a href="#work" className="inline-flex items-center text-white font-bold hover:text-[#F26207] transition-colors">
+                See the evidence <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-[#F26207] blur-[100px] opacity-10 rounded-full" />
+            <div className="relative bg-[#1B252B] border border-white/10 p-8 rounded-[4px] shadow-2xl">
+               <div className="flex items-center justify-between mb-6 border-b border-white/5 pb-4">
+                 <span className="font-mono text-sm text-[#F26207]">mission_log.md</span>
+                 <div className="flex gap-2">
+                   <div className="w-2 h-2 rounded-full bg-white/20" />
+                   <div className="w-2 h-2 rounded-full bg-white/20" />
+                 </div>
+               </div>
+               <div className="space-y-4 font-mono text-sm">
+                 <p className="text-[#AEBEC7]">
+                   <span className="text-[#F26207]">&gt;</span> Current Status: <span className="text-white">Seeking Replit</span>
+                 </p>
+                 <p className="text-[#AEBEC7]">
+                   <span className="text-[#F26207]">&gt;</span> Location: <span className="text-white">Berkeley, CA</span>
+                 </p>
+                 <p className="text-[#AEBEC7]">
+                   <span className="text-[#F26207]">&gt;</span> Objective: <span className="text-white">Empower the next billion software creators.</span>
+                 </p>
+                 <p className="text-[#AEBEC7]">
+                   <span className="text-[#F26207]">&gt;</span> Skills: <span className="text-white">["DevRel", "React", "Community", "Shipping"]</span>
+                 </p>
+                 <div className="h-px bg-white/5 my-4" />
+                 <p className="text-green-400 animate-pulse">
+                   &gt; Ready to deploy...
+                 </p>
+               </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
