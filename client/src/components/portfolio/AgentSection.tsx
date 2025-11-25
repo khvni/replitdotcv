@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Users, Zap, Code, PenTool, Mic, ExternalLink } from "lucide-react";
+import GlitchHeader from "../ui/GlitchHeader";
 
 import mtcImage from "@assets/generated_images/vibrant_community_event_landing_page_mockup.png";
 import codeImage from "@assets/generated_images/code_education_platform_interface_mockup.png";
@@ -61,23 +62,24 @@ export default function AgentSection() {
             >
               {/* Text Side */}
               <div className="flex-1 w-full text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1C232B] border border-[#2B323B] text-[#F26207] text-sm font-medium mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1C232B] border border-[#2B323B] text-[#F26207] text-sm font-medium mb-6 font-mono">
                    <feature.icon className="w-4 h-4" />
                    <span>FEATURE_{index + 1}</span>
                 </div>
                 
-                <h3 className="text-3xl md:text-4xl font-semibold text-white mb-4 tracking-tight">
-                  {feature.title}
-                </h3>
+                <GlitchHeader 
+                  text={feature.title} 
+                  className="text-3xl md:text-4xl font-semibold text-white mb-4 tracking-tight" 
+                />
 
-                <p className="text-lg text-[#AEBEC7] leading-relaxed mb-8 max-w-lg">
+                <p className="text-lg text-[#AEBEC7] leading-relaxed mb-8 max-w-lg font-sans">
                   {feature.description}
                 </p>
 
                 <a 
                   href={feature.link}
                   target="_blank"
-                  className="inline-flex items-center gap-2 text-white font-medium hover:text-[#F26207] transition-colors border-b border-transparent hover:border-[#F26207]"
+                  className="inline-flex items-center gap-2 text-white font-medium hover:text-[#F26207] transition-colors border-b border-transparent hover:border-[#F26207] font-mono"
                 >
                   View Evidence <ExternalLink className="w-4 h-4" />
                 </a>

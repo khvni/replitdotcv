@@ -1,0 +1,115 @@
+Here are the **two isolated snippets** from your code that generate the visual dithering effects:
+
+---
+
+### 1. “Towers” / City Dither Effect
+
+This part draws abstract 3D monolith-like blocks in isometric projection and applies a dithering pass.
+
+```jsx
+const canvas = document.createElement("canvas");
+document.body.appendChild(canvas);
+const ctx = canvas.getContext("2d", { willReadFrequently: true });
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+function drawBlock(x, y, w, h, shade) {
+  const angle = Math.PI / 6;
+  const dx = w * Math.cos(angle);
+  const dy = w * Math.sin(angle);
+  ctx.save();
+  ctx.translate(x, y);
+
+  // top
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(dx, -dy);
+  ctx.lineTo(dx * 2, 0);
+  ctx.lineTo(dx, dy);
+  ctx.fillStyle = `rgb(${shade + 40},${shade + 40},${shade + 40})`;
+  ctx.fill();
+
+  // right
+  ctx.beginPath();
+  ctx.moveTo(dx * 2, 0);
+  ctx.lineTo(dx, dy);
+  ctx.lineTo(dx, dy + h);
+  ctx.lineTo(dx * 2, h);
+  ctx.fillStyle = `rgb(${shade - 20},${shade - 20},${shade - 20})`;
+  ctx.fill();
+
+  // left
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(dx, dy);
+  ctx.lineTo(dx, dy + h);
+  ctx.lineTo(0, h);
+  ctx.fillStyle = `rgb(${shade},${shade},${shade})`;
+  ctx.fill();
+
+  ctx.restore();
+}
+
+function render(t) {
+  ctx.fillStyle = "#000";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+
+  drawBlock(cx - 100, cy - 100 + Math.sin(t) * 20, 80, 600, 100);
+  drawBlock(cx + 50, cy - 200 + Math.cos(t * 0.8) * 20, 100, 700, 80);
+  drawBlock(cx - 250, cy + 100 + Math.sin(t * 1.2) * 15, 60, 400, 120);
+
+  // dithering pass
+  const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = img.data;
+  for (let i = 0; i < data.length; i += 4) {
+    const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    const noise = Math.random() * 50 - 25;
+    const val = avg + noise > 128 ? 255 : 0;
+    data[i] = data[i + 1] = data[i + 2] = val;
+  }
+  ctx.putImageData(img, 0, 0);
+
+  requestAnimationFrame(() => render(t + 0.01));
+}
+render(0);
+```
+
+---
+
+### 2. “TV Static” / Noise Effect
+
+This is the moving static seen in the hero or footer sections.
+
+```jsx
+const canvas = document.createElement("canvas");
+document.body.appendChild(canvas);
+const ctx = canvas.getContext("2d", { willReadFrequently: true });
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+function render(t) {
+  const imageData = ctx.createImageData(canvas.width, canvas.height);
+  const data = imageData.data;
+
+  for (let i = 0; i < data.length; i += 4) {
+    const value = Math.random() * 255;
+    data[i] = data[i + 1] = data[i + 2] = value;
+    data[i + 3] = 255;
+  }
+
+  ctx.putImageData(imageData, 0, 0);
+  requestAnimationFrame(() => render(t + 0.01));
+}
+render(0);
+```
+
+---
+
+**Summary:**
+
+* The **first** creates an animated “cityscape” of monolithic towers with dithering.
+* The **second** is a self-contained “TV static” generator — lightweight and visually similar to analog noise.
+
+Both snippets can run independently in a `<script>` tag or an HTML file using a `<canvas>` element.

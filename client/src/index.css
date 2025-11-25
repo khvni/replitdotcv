@@ -24,10 +24,11 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   
-  /* Typography Update - Clean Replit Style */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'IBM Plex Sans', monospace;
+  /* Typography Update */
+  --font-sans: 'Syne', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Fragment Mono', monospace;
+  --font-pixel: 'Pixelify Sans', display;
   
   --radius: 8px;
 }

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Send, ArrowRight, MessageSquare, Mail } from "lucide-react";
+import GlitchHeader from "../ui/GlitchHeader";
 
 export default function Contact() {
   return (
@@ -11,9 +12,10 @@ export default function Contact() {
             Status: Available
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-display font-bold mb-8 text-white tracking-tight uppercase leading-none">
-            Ready to Ship?
-          </h2>
+          <GlitchHeader 
+            text="Ready to Ship?" 
+            className="text-5xl md:text-7xl font-display font-bold mb-8 text-white tracking-tight uppercase leading-none"
+          />
           
           <p className="text-xl md:text-2xl text-[#AEBEC7] mb-12 font-sans max-w-2xl mx-auto leading-relaxed">
             I want to build at Replit. Let's skip the fluff and deploy.
@@ -22,7 +24,7 @@ export default function Contact() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a 
               href="mailto:ali@example.com" 
-              className="bg-[#F26207] text-white font-display font-bold text-lg px-8 py-4 rounded hover:bg-[#D95200] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 uppercase"
+              className="bg-[#F26207] text-white font-mono font-bold text-lg px-8 py-4 rounded hover:bg-[#D95200] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 uppercase"
             >
               <Mail className="w-5 h-5" /> Email Me
             </a>
@@ -30,7 +32,7 @@ export default function Contact() {
               href="https://x.com/alikhvni" 
               target="_blank"
               rel="noreferrer"
-              className="bg-[#1B252B] text-white border border-white/20 font-display font-bold text-lg px-8 py-4 rounded hover:bg-[#232C30] hover:border-white/40 transition-all flex items-center justify-center gap-3 uppercase"
+              className="bg-[#1B252B] text-white border border-white/20 font-mono font-bold text-lg px-8 py-4 rounded hover:bg-[#232C30] hover:border-white/40 transition-all flex items-center justify-center gap-3 uppercase"
             >
                DM on Twitter <ArrowRight className="w-5 h-5" />
             </a>

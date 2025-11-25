@@ -39,9 +39,9 @@ export default function Navbar() {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
            <div className="h-8 w-8 bg-[#F26207] flex items-center justify-center transform -rotate-3 group-hover:rotate-0 transition-transform">
-             <span className="font-bold text-black font-display text-lg">AK</span>
+             <span className="font-bold text-black font-mono text-lg">AK</span>
            </div>
-           <span className="font-bold text-white text-xl tracking-tight font-display group-hover:text-[#F26207] transition-colors uppercase">
+           <span className="font-bold text-white text-xl tracking-tight font-mono group-hover:text-[#F26207] transition-colors uppercase">
              ALI KHANI
            </span>
         </Link>
@@ -52,7 +52,7 @@ export default function Navbar() {
             <button
               key={item.name}
               onClick={() => scrollToSection(item.href)}
-              className="text-sm font-bold text-[#AEBEC7] hover:text-white hover:bg-[#F26207] hover:text-black px-2 py-1 transition-all font-display uppercase tracking-wide"
+              className="text-sm font-bold text-[#AEBEC7] hover:text-white hover:bg-[#F26207] hover:text-black px-2 py-1 transition-all font-mono uppercase tracking-wide"
             >
               {item.name}
             </button>
@@ -73,7 +73,7 @@ export default function Navbar() {
           </div>
           <button 
             onClick={() => scrollToSection('#contact')}
-            className="bg-transparent text-[#F26207] border-2 border-[#F26207] hover:bg-[#F26207] hover:text-white font-bold text-sm px-6 py-2 rounded-none transition-all font-display uppercase tracking-wider"
+            className="bg-transparent text-[#F26207] border-2 border-[#F26207] hover:bg-[#F26207] hover:text-white font-bold text-sm px-6 py-2 rounded-none transition-all font-mono uppercase tracking-wider"
           >
             HIRE ALI
           </button>
@@ -102,7 +102,7 @@ export default function Navbar() {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-2xl font-bold text-left text-white hover:text-[#F26207] font-display uppercase"
+                  className="text-2xl font-bold text-left text-white hover:text-[#F26207] font-mono uppercase"
                 >
                   {item.name}
                 </button>
@@ -117,7 +117,7 @@ export default function Navbar() {
               </div>
               <button 
                 onClick={() => scrollToSection('#contact')}
-                className="bg-[#F26207] text-white font-bold text-lg py-4 w-full text-center uppercase font-display hover:bg-[#D95200]"
+                className="bg-[#F26207] text-white font-bold text-lg py-4 w-full text-center uppercase font-mono hover:bg-[#D95200]"
               >
                 HIRE ALI
               </button>

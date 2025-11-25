@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Play } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import Typewriter from "typewriter-effect";
+import DitherBackground from "../ui/DitherBackground";
+import GlitchHeader from "../ui/GlitchHeader";
 
 export default function Hero() {
-  const [isFocused, setIsFocused] = useState(true);
-
   const logos = [
     { name: "OPEN SV", url: "https://opensv.org" },
     { name: "MTC", url: "https://mtc.so" },
@@ -23,21 +22,27 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-32 pb-20 bg-[#0B1419]">
+      {/* Dither Background Effect */}
+      <DitherBackground />
+
       <div className="container relative z-20 px-6 text-center max-w-7xl mx-auto flex flex-col items-center">
         
-        <motion.h1 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-semibold tracking-tight mb-6 text-white"
+          className="mb-6"
         >
-          Turn community into shipping
-        </motion.h1>
+          <GlitchHeader 
+            text="Turn community into shipping" 
+            className="text-5xl md:text-7xl font-bold tracking-tight text-white" 
+          />
+        </motion.div>
 
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-xl text-[#AEBEC7] mb-12 max-w-2xl"
+          className="text-xl text-[#AEBEC7] mb-12 max-w-2xl font-sans"
         >
           Ali Khani. 1800+ students taught. 30+ chapters built. Zero fluff.
         </motion.p>
@@ -47,7 +52,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="w-full max-w-2xl bg-[#1C232B] rounded-xl border border-[#2B323B] shadow-2xl overflow-hidden mb-24 relative"
+          className="w-full max-w-2xl bg-[#1C232B] rounded-xl border border-[#2B323B] shadow-2xl overflow-hidden mb-24 relative font-mono"
         >
            {/* Prompt Header */}
            <div className="flex items-center justify-between px-4 py-3 border-b border-[#2B323B] bg-[#1C232B]">
@@ -100,7 +105,7 @@ export default function Hero() {
 
         {/* Trusted By Logos */}
         <div className="w-full max-w-5xl mx-auto">
-          <p className="text-sm text-[#5D6C76] mb-6 font-medium uppercase tracking-wider">Trusted By & Building With</p>
+          <p className="text-sm text-[#5D6C76] mb-6 font-medium uppercase tracking-wider font-mono">Trusted By & Building With</p>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 opacity-60">
             {logos.map((logo, index) => (
               <a 
@@ -108,7 +113,7 @@ export default function Hero() {
                 href={logo.url} 
                 target="_blank" 
                 rel="noreferrer"
-                className="text-[#AEBEC7] hover:text-white transition-colors font-medium text-sm md:text-base flex items-center gap-2"
+                className="text-[#AEBEC7] hover:text-white transition-colors font-medium text-sm md:text-base flex items-center gap-2 font-mono"
               >
                 {logo.name}
               </a>
