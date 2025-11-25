@@ -24,7 +24,7 @@ export default function Footer() {
         </div>
 
         <div className="text-[#5D6C76] font-mono text-sm text-center">
-          <p>&copy; {new Date().getFullYear()} Ali Khani. Built with Replit.</p>
+          <p>&copy; {new Date().getFullYear()} Ali Khani.</p>
           <p className="mt-2 text-[#F26207]/80">PS: This whole site was designed with Replit. ;)</p>
         </div>
       </div>

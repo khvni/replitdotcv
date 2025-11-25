@@ -53,7 +53,7 @@ export default function Navbar() {
       }`}
       onMouseLeave={() => setActiveDropdown(null)}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
+      <div className="container mx-auto px-6 relative flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group z-50 relative">
            <div className="h-8 w-8 bg-[#F26207] flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform">
              <span className="font-bold text-black font-mono text-lg">AK</span>
@@ -64,7 +64,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
           {navStructure.map((item) => (
             <div 
               key={item.name} 
