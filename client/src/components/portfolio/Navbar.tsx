@@ -54,17 +54,24 @@ export default function Navbar() {
       onMouseLeave={() => setActiveDropdown(null)}
     >
       <div className="container mx-auto px-6 relative flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group z-50 relative">
-           <div className="h-8 w-8 bg-[#F26207] flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform">
-             <span className="font-bold text-black font-mono text-lg">AK</span>
-           </div>
-           <span className="font-bold text-white text-xl tracking-tight font-mono group-hover:text-[#F26207] transition-colors uppercase">
-             ALI KHANI
-           </span>
-        </Link>
+        <div className="flex-shrink-0 w-48">
+          <Link href="/" className="flex items-center gap-3 group z-50 relative">
+             <div className="h-8 w-8 bg-[#F26207] flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform">
+               <span className="font-bold text-black font-mono text-lg">AK</span>
+             </div>
+             <div className="flex flex-col leading-none">
+                <span className="font-bold text-white text-sm tracking-tight font-mono group-hover:text-[#F26207] transition-colors uppercase">
+                  ALI
+                </span>
+                <span className="font-bold text-white text-sm tracking-tight font-mono group-hover:text-[#F26207] transition-colors uppercase">
+                  KHANI
+                </span>
+             </div>
+          </Link>
+        </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
+        <div className="hidden md:flex items-center justify-center gap-8 flex-1">
           {navStructure.map((item) => (
             <div 
               key={item.name} 
@@ -94,7 +101,7 @@ export default function Navbar() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-48 bg-[#1C232B] border border-[#2B323B] shadow-xl rounded-lg overflow-hidden py-2 z-50"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-[#1C232B] border border-[#2B323B] shadow-xl rounded-lg overflow-hidden py-2 z-50"
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     {item.items.map((subItem) => (
@@ -110,12 +117,14 @@ export default function Navbar() {
             </div>
           ))}
 
+        <div className="hidden md:flex justify-end flex-shrink-0 w-48">
           <a 
             href="mailto:byalikhani@gmail.com"
             className="bg-transparent text-[#F26207] border-2 border-[#F26207] hover:bg-[#F26207] hover:text-white font-bold text-sm px-6 py-2 rounded-none transition-all font-mono uppercase tracking-wider flex items-center gap-2"
           >
             HIRE <Mail className="w-4 h-4" />
           </a>
+        </div>
         </div>
 
         {/* Mobile Toggle */}

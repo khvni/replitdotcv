@@ -36,7 +36,7 @@ export default function Hero() {
           className="mb-6"
         >
           <GlitchHeader 
-            text="Turn community into shipping" 
+            text="The search for your next DevRel ends here." 
             className="text-5xl md:text-7xl font-bold tracking-tight text-white" 
           />
         </motion.div>
@@ -47,7 +47,7 @@ export default function Hero() {
           transition={{ delay: 0.1 }}
           className="text-xl text-[#fdfdfd] mb-12 max-w-2xl font-sans"
         >
-          Ali Khani. 1800+ students taught. 30+ chapters built. Zero fluff.
+          Introducing <span className="font-bold text-white">Ali Khani</span>.
         </motion.p>
 
         {/* Replit Prompt Simulation */}
