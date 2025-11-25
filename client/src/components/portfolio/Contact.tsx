@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
 import { Send, ArrowRight, MessageSquare, Mail } from "lucide-react";
 import GlitchHeader from "../ui/GlitchHeader";
+import DitherCanvas from "../ui/DitherCanvas";
 
 export default function Contact() {
   return (
     <section id="contact" className="py-32 bg-[#0B1419] border-t border-white/10 relative overflow-hidden">
+      {/* Dither Background (Orb for differentiation) */}
+      <DitherCanvas mode="orb" className="opacity-30 mix-blend-screen" />
+      
       <div className="container mx-auto px-6 relative z-10">
         <div className="bg-[#1B252B] border border-white/10 rounded-lg p-12 md:p-24 text-center max-w-4xl mx-auto shadow-2xl">
           

@@ -5,24 +5,30 @@ import { Menu, X, ChevronDown, Mail } from "lucide-react";
 
 const navStructure = [
   { 
-    name: "Making", 
+    name: "Make", 
     type: "dropdown",
     items: [
       { name: "Projects", href: "/projects" },
-      { name: "Professional", href: "/professional" }
+      { name: "Experience", href: "/experience" },
+      { name: "Content", href: "/content" }
     ]
   },
   { 
-    name: "Teaching", 
-    href: "/teaching",
-    type: "link"
+    name: "Teach", 
+    type: "dropdown",
+    items: [
+      { name: "CS @ Berkeley", href: "/cs-berkeley" },
+      { name: "MTC", href: "/mtc" },
+      { name: "Replit", href: "/replit" }
+    ]
   },
   { 
-    name: "Connecting", 
+    name: "Connect", 
     type: "dropdown",
     items: [
       { name: "Communities", href: "/communities" },
-      { name: "Conferences", href: "/conferences" }
+      { name: "Conferences", href: "/conferences" },
+      { name: "Socials", href: "/socials" }
     ]
   }
 ];

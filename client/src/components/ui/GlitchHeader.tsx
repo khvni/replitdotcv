@@ -13,8 +13,8 @@ export default function GlitchHeader({ text, className = "" }: GlitchHeaderProps
       const newSet = new Set<number>();
       const textLength = text.length;
       
-      // Select 3-4 random indices
-      const count = Math.floor(Math.random() * 2) + 3; // Random integer between 3 and 4
+      // Select 4-5 random indices
+      const count = Math.floor(Math.random() * 2) + 4; // Random integer between 4 and 5
       
       for (let i = 0; i < count; i++) {
         const randomIndex = Math.floor(Math.random() * textLength);
@@ -22,7 +22,7 @@ export default function GlitchHeader({ text, className = "" }: GlitchHeaderProps
       }
       
       setPixelatedIndices(newSet);
-    }, 1200); // Faster but not distracting
+    }, 800); // Faster intervals for more "alive" feel
 
     return () => clearInterval(interval);
   }, [text]);
