@@ -1,0 +1,49 @@
+[plugin:vite:esbuild] Transform failed with 4 errors:
+/home/runner/workspace/client/src/components/portfolio/Hero.tsx:70:18: ERROR: The character ">" is not valid inside a JSX element
+/home/runner/workspace/client/src/components/portfolio/Hero.tsx:71:18: ERROR: The character ">" is not valid inside a JSX element
+/home/runner/workspace/client/src/components/portfolio/Hero.tsx:72:18: ERROR: The character ">" is not valid inside a JSX element
+/home/runner/workspace/client/src/components/portfolio/Hero.tsx:73:18: ERROR: The character ">" is not valid inside a JSX element
+/home/runner/workspace/client/src/components/portfolio/Hero.tsx:70:0
+The character ">" is not valid inside a JSX element
+68 |                  <br data-replit-metadata="client/src/components/portfolio/Hero.tsx:68:16" data-component-name="br" />
+69 |                  <span data-replit-metadata="client/src/components/portfolio/Hero.tsx:69:16" data-component-name="span...
+70 |                    > Founder @ MTC (30+ Chapters)<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:70...
+   |                    ^
+71 |                    > 1,800+ Students Taught<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:71:42" d...
+72 |                    > 16k+ Views on "Vibe Coding"<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:72:...
+
+The character ">" is not valid inside a JSX element
+69 |                  <span data-replit-metadata="client/src/components/portfolio/Hero.tsx:69:16" data-component-name="span...
+70 |                    > Founder @ MTC (30+ Chapters)<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:70...
+71 |                    > 1,800+ Students Taught<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:71:42" d...
+   |                    ^
+72 |                    > 16k+ Views on "Vibe Coding"<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:72:...
+73 |                    > High-Agency Builder
+
+The character ">" is not valid inside a JSX element
+70 |                    > Founder @ MTC (30+ Chapters)<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:70...
+71 |                    > 1,800+ Students Taught<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:71:42" d...
+72 |                    > 16k+ Views on "Vibe Coding"<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:72:...
+   |                    ^
+73 |                    > High-Agency Builder
+74 |                  </span>
+
+The character ">" is not valid inside a JSX element
+71 |                    > 1,800+ Students Taught<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:71:42" d...
+72 |                    > 16k+ Views on "Vibe Coding"<br data-replit-metadata="client/src/components/portfolio/Hero.tsx:72:...
+73 |                    > High-Agency Builder
+   |                    ^
+74 |                  </span>
+75 |                  <br data-replit-metadata="client/src/components/portfolio/Hero.tsx:75:16" data-component-name="br" />
+    at failureErrorWithLog (/home/runner/workspace/node_modules/esbuild/lib/main.js:1467:15)
+    at /home/runner/workspace/node_modules/esbuild/lib/main.js:736:50
+    at responseCallbacks.<computed> (/home/runner/workspace/node_modules/esbuild/lib/main.js:603:9)
+    at handleIncomingPacket (/home/runner/workspace/node_modules/esbuild/lib/main.js:658:12)
+    at Socket.readFromStdout (/home/runner/workspace/node_modules/esbuild/lib/main.js:581:7)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+Click outside, press Esc key, or fix the code to dismiss.
+You can also disable this overlay by setting server.hmr.overlay to false in vite.config.ts.

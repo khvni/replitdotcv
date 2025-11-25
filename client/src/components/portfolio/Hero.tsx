@@ -67,10 +67,10 @@ export default function Hero() {
                 <span className="text-[#AEBEC7]">$</span> <span className="text-[#F26207] font-bold">whoami</span>
                 <br/>
                 <span className="text-white block mt-2">
-                  > Founder @ MTC (30+ Chapters)<br/>
-                  > 1,800+ Students Taught<br/>
-                  > 16k+ Views on "Vibe Coding"<br/>
-                  > High-Agency Builder
+                  &gt; Founder @ MTC (30+ Chapters)<br/>
+                  &gt; 1,800+ Students Taught<br/>
+                  &gt; 16k+ Views on "Vibe Coding"<br/>
+                  &gt; High-Agency Builder
                 </span>
                 <br/>
                 <span className="text-[#AEBEC7]">$</span> <span className="text-[#F26207] font-bold">deploy --production</span>
