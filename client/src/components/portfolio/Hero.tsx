@@ -2,6 +2,23 @@ import { motion } from "framer-motion";
 import { Terminal } from "lucide-react";
 
 export default function Hero() {
+  // Function to render text with randomized pixelated characters
+  const PixelatedText = ({ text, className }: { text: string, className?: string }) => {
+    return (
+      <span className={className}>
+        {text.split('').map((char, i) => {
+          // Randomly choose some characters to be pixelated (every 3rd or 4th char approx)
+          const isPixel = (i + 2) % 4 === 0 || (i + 5) % 7 === 0;
+          return (
+            <span key={i} className={isPixel ? "font-pixel" : ""}>
+              {char}
+            </span>
+          );
+        })}
+      </span>
+    );
+  };
+
   return (
     <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-20 pb-20">
       {/* Content */}
@@ -12,9 +29,9 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 text-white leading-[1.1]">
-            Turn ideas into <br className="hidden md:block" />
-            <span className="text-[#F26207]">apps</span>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tight mb-8 text-white leading-[1.05]">
+            Turn <PixelatedText text="ideas" /> into <br className="hidden md:block" />
+            <span className="text-[#F26207]"><PixelatedText text="apps" /></span>
           </h1>
 
           <p className="text-xl md:text-2xl text-[#AEBEC7] max-w-3xl mb-12 font-light leading-relaxed">
@@ -61,14 +78,14 @@ export default function Hero() {
           className="text-center"
         >
           <p className="text-sm text-[#5d6c76] mb-6 uppercase tracking-widest font-bold">
-            Trusted by communities at
+            Trusted by founders and communities at
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            <span className="text-xl font-display font-bold text-white">UC Berkeley</span>
-            <span className="text-xl font-display font-bold text-white">MTC</span>
-            <span className="text-xl font-display font-bold text-white">OPEN SV</span>
-            <span className="text-xl font-display font-bold text-white">TEDx</span>
-            <span className="text-xl font-display font-bold text-white">Quora (6M+)</span>
+            <span className="text-xl font-hack font-bold text-white">UC Berkeley</span>
+            <span className="text-xl font-hack font-bold text-white">MTC</span>
+            <span className="text-xl font-hack font-bold text-white">OPEN SV</span>
+            <span className="text-xl font-hack font-bold text-white">TEDx</span>
+            <span className="text-xl font-hack font-bold text-white">Quora (6M+)</span>
           </div>
         </motion.div>
       </div>

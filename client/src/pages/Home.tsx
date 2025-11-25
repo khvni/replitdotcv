@@ -1,7 +1,7 @@
 import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
-import About from "@/components/portfolio/About";
-import Work from "@/components/portfolio/Work";
+import About from "@/components/portfolio/About"; // Keeping About as a secondary section if needed, or removing
+import AgentSection from "@/components/portfolio/AgentSection";
 import Contact from "@/components/portfolio/Contact";
 import ReplitBadge from "@/components/portfolio/ReplitBadge";
 import Terminal from "@/components/portfolio/Terminal";
@@ -13,8 +13,8 @@ export default function Home() {
       
       <main>
         <Hero />
-        <Work />
-        <About />
+        {/* The AgentSection replaces the standard "Work" grid with the orange Replit-style layout */}
+        <AgentSection /> 
         <Contact />
       </main>
 
