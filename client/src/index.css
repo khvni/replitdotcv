@@ -24,15 +24,16 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Inter', sans-serif; /* Replit uses a clean sans mostly */
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Typography aligned with Replit's Hack homage + Unique Body Font */
+  --font-display: 'Hack', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'Space Mono', monospace;
   
-  --radius: 0px; /* Replit design is sharp */
+  --radius: 0px;
 }
 
 :root {
-  /* Replit Light (Approximation based on brand kit for light mode if needed, but usually dark) */
+  /* Replit Light (Base) */
   --background: 0 0% 100%;
   --foreground: 210 14% 9%;
   --card: 0 0% 100%;
@@ -52,20 +53,19 @@
   --border: 220 13% 91%;
   --input: 220 13% 91%;
   --ring: 23 94% 49%;
-  --radius: 0px;
 }
 
 .dark {
-  /* Replit Dark Theme from Brand Kit */
+  /* Replit Dark Theme Exact Match */
   --background: 204 39% 7%; /* #0B1419 */
   --foreground: 200 18% 73%; /* #AEBEC7 */
-  --card: 202 23% 14%; /* #1B252B - slightly lighter than bg for contrast */
+  --card: 202 23% 14%; /* #1B252B */
   --card-foreground: 200 18% 73%;
   --popover: 204 39% 7%;
   --popover-foreground: 200 18% 73%;
   --primary: 23 94% 49%; /* #F26207 */
   --primary-foreground: 0 0% 100%;
-  --secondary: 202 23% 14%; /* #1B252B */
+  --secondary: 202 23% 14%;
   --secondary-foreground: 200 18% 73%;
   --muted: 202 23% 14%;
   --muted-foreground: 200 10% 50%;
@@ -73,7 +73,7 @@
   --accent-foreground: 0 0% 100%;
   --destructive: 0 62% 30%;
   --destructive-foreground: 0 0% 100%;
-  --border: 202 23% 14%; /* #1B252B */
+  --border: 202 23% 14%;
   --input: 202 23% 14%;
   --ring: 23 94% 49%;
 }
@@ -86,7 +86,7 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight text-white; /* Headings are usually white in dark mode */
+    @apply font-display tracking-tight text-white;
   }
 }
 
@@ -96,10 +96,14 @@
   }
   
   .replit-card {
-    @apply bg-card border border-white/5 hover:border-primary/50 transition-colors duration-200;
+    @apply bg-[#1B252B] border border-white/5 hover:border-[#F26207]/50 transition-all duration-300;
   }
   
-  .replit-button {
-    @apply bg-primary text-white font-medium px-6 py-2 rounded-[4px] hover:bg-[#D95200] transition-colors duration-200 text-sm;
+  .replit-button-primary {
+    @apply bg-[#F26207] text-white font-bold px-6 py-3 rounded-[4px] hover:bg-[#D95200] transition-all duration-200 shadow-[0_0_15px_rgba(242,98,7,0.2)] hover:shadow-[0_0_25px_rgba(242,98,7,0.4)];
+  }
+  
+  .replit-button-secondary {
+    @apply bg-[#1B252B] text-white border border-white/10 font-bold px-6 py-3 rounded-[4px] hover:bg-[#232C30] hover:border-white/20 transition-all duration-200;
   }
 }

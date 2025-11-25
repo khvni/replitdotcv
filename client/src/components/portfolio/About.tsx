@@ -1,103 +1,90 @@
 import { motion } from "framer-motion";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { ExternalLink, Terminal, Play, Cpu, Users, Mic } from "lucide-react";
+import work1 from "@assets/generated_images/modern_dark_mode_dashboard_ui_mockup.png";
+import work2 from "@assets/generated_images/code_education_platform_interface_mockup.png";
+import work3 from "@assets/generated_images/vibrant_community_event_landing_page_mockup.png";
 
-const experience = [
+const features = [
   {
-    role: "CS 61B Head TA @ Berkeley",
-    metric: "1800+ Students",
-    detail: "Led 60+ staff. Redesigned curriculum for modern tooling. Turned abstract theory into shippable skills."
+    title: "Community Building",
+    description: "Founder of MTC with 30+ university chapters. I don't just join communities; I build operating systems for them to thrive.",
+    icon: Users,
+    stats: "30+ Chapters"
   },
   {
-    role: "Founder @ MTC",
-    metric: "30+ Universities",
-    detail: "Built a viral tech community from scratch. High-growth, high-energy, zero budget. Pure hustle."
+    title: "Technical Teaching",
+    description: "CS 61B TA for 1,800+ students. I turn complex Data Structures concepts into shippable insights for the next generation.",
+    icon: Terminal,
+    stats: "1800+ Students"
   },
   {
-    role: "Content Creator",
-    metric: "16k+ Views",
-    detail: "Replit-style workshops that actually get watched. I know how to capture attention in the scroll economy."
+    title: "Viral Content",
+    description: "My 'Vibe Coding' Replit workshop hit 16k views. I know how to make technical content spread in the attention economy.",
+    icon: Play,
+    stats: "16k+ Views"
   }
 ];
 
 export default function About() {
   return (
-    <section id="experience" className="py-24 bg-[#0B1419] relative">
+    <section id="experience" className="py-32 bg-[#0B1419] border-t border-white/5">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold mb-6 text-white">
-              High Agency. <br/>
-              <span className="text-[#F26207]">Radical Impact.</span>
-            </h2>
-            <p className="text-xl text-[#AEBEC7] mb-8 leading-relaxed">
-              I don't wait for permission to build. My track record isn't just about holding titles—it's about creating movement. 
-              I bridge the gap between complex engineering and the next generation of developers.
-            </p>
-            
-            <div className="space-y-6">
-              {experience.map((item, i) => (
-                <div key={i} className="flex gap-4 items-start group">
-                  <div className="mt-1">
-                    <CheckCircle className="w-5 h-5 text-[#F26207]" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-[#F26207] transition-colors">
-                      {item.role} <span className="text-[#AEBEC7] font-normal mx-2">|</span> {item.metric}
-                    </h3>
-                    <p className="text-[#AEBEC7] text-sm mt-1">
-                      {item.detail}
-                    </p>
-                  </div>
+        <div className="mb-20 text-center max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Powering the next generation
+          </h2>
+          <p className="text-xl text-[#AEBEC7]">
+            Replit gives people superpowers. I teach them how to use them.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-[#1B252B] border border-white/5 p-8 rounded-[4px] hover:border-[#F26207]/50 transition-all duration-300 group"
+            >
+              <div className="w-12 h-12 bg-[#0B1419] border border-white/10 rounded-[4px] flex items-center justify-center mb-6 group-hover:border-[#F26207] transition-colors">
+                <feature.icon className="w-6 h-6 text-white group-hover:text-[#F26207]" />
+              </div>
+              
+              <h3 className="text-xl font-bold text-white mb-3 font-display">
+                {feature.title}
+              </h3>
+              
+              <p className="text-[#AEBEC7] leading-relaxed mb-6 font-light">
+                {feature.description}
+              </p>
+
+              <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+                <span className="text-[#F26207] font-mono text-sm font-bold">
+                  {feature.stats}
+                </span>
+                <div className="h-1 w-12 bg-[#F26207]/20 rounded-full overflow-hidden">
+                  <div className="h-full bg-[#F26207] w-2/3" />
                 </div>
-              ))}
-            </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-            <div className="mt-10">
-              <a href="#work" className="inline-flex items-center text-white font-bold hover:text-[#F26207] transition-colors">
-                See the evidence <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="absolute inset-0 bg-[#F26207] blur-[100px] opacity-10 rounded-full" />
-            <div className="relative bg-[#1B252B] border border-white/10 p-8 rounded-[4px] shadow-2xl">
-               <div className="flex items-center justify-between mb-6 border-b border-white/5 pb-4">
-                 <span className="font-mono text-sm text-[#F26207]">mission_log.md</span>
-                 <div className="flex gap-2">
-                   <div className="w-2 h-2 rounded-full bg-white/20" />
-                   <div className="w-2 h-2 rounded-full bg-white/20" />
-                 </div>
+        {/* Speaking Section Integrated */}
+        <div className="mt-32">
+           <h3 className="text-2xl font-bold text-white mb-8 font-display border-l-4 border-[#F26207] pl-4">
+             Speaking & Thought Leadership
+           </h3>
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+             {['TEDx Speaker', 'OPEN SV Forum', 'ICNA West 2025', 'Apex Mosque Summit'].map((event, i) => (
+               <div key={i} className="bg-[#1B252B] border border-white/5 p-4 rounded flex items-center gap-3">
+                 <Mic className="w-4 h-4 text-[#F26207]" />
+                 <span className="text-white font-medium">{event}</span>
                </div>
-               <div className="space-y-4 font-mono text-sm">
-                 <p className="text-[#AEBEC7]">
-                   <span className="text-[#F26207]">&gt;</span> Current Status: <span className="text-white">Seeking Replit</span>
-                 </p>
-                 <p className="text-[#AEBEC7]">
-                   <span className="text-[#F26207]">&gt;</span> Location: <span className="text-white">Berkeley, CA</span>
-                 </p>
-                 <p className="text-[#AEBEC7]">
-                   <span className="text-[#F26207]">&gt;</span> Objective: <span className="text-white">Empower the next billion software creators.</span>
-                 </p>
-                 <p className="text-[#AEBEC7]">
-                   <span className="text-[#F26207]">&gt;</span> Skills: <span className="text-white">["DevRel", "React", "Community", "Shipping"]</span>
-                 </p>
-                 <div className="h-px bg-white/5 my-4" />
-                 <p className="text-green-400 animate-pulse">
-                   &gt; Ready to deploy...
-                 </p>
-               </div>
-            </div>
-          </motion.div>
+             ))}
+           </div>
         </div>
       </div>
     </section>
