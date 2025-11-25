@@ -6,22 +6,22 @@ export default function StaticBackground() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const resize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resize);
 
     let animationFrameId: number;
     let t = 0;
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    
-    window.addEventListener('resize', resize);
-    resize();
-
-    function render() {
+    function render(time: number) {
       if (!ctx || !canvas) return;
       
       const imageData = ctx.createImageData(canvas.width, canvas.height);
@@ -29,31 +29,28 @@ export default function StaticBackground() {
 
       for (let i = 0; i < data.length; i += 4) {
         const value = Math.random() * 255;
-        // Make it grayscale noise
-        data[i] = value;     // R
-        data[i + 1] = value; // G
-        data[i + 2] = value; // B
-        // Add transparency to blend with background
-        data[i + 3] = 30;    // Alpha (low opacity to blend)
+        data[i] = value;
+        data[i + 1] = value;
+        data[i + 2] = value;
+        data[i + 3] = 255; // Fully opaque pixels, we'll control blend via CSS
       }
 
       ctx.putImageData(imageData, 0, 0);
       t += 0.01;
-      animationFrameId = requestAnimationFrame(render);
+      animationFrameId = requestAnimationFrame(() => render(time + 0.01));
     }
-
-    render();
+    render(0);
 
     return () => {
-      window.removeEventListener('resize', resize);
-      cancelAnimationFrame(animationFrameId);
-    };
+        window.removeEventListener('resize', resize);
+        cancelAnimationFrame(animationFrameId);
+    }
   }, []);
 
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 z-0 w-full h-full opacity-20 pointer-events-none mix-blend-overlay"
+      className="absolute inset-0 z-10 w-full h-full opacity-10 pointer-events-none mix-blend-overlay"
     />
   );
 }

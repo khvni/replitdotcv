@@ -1,0 +1,430 @@
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowRight, Activity, Disc, ChevronDown } from 'lucide-react';
+
+// IMPORTS: Updated Fonts - Switched Manrope to 'Syne' for a unique art-gallery feel
+const FontStyles = () => (
+  <style>{`
+    @import url('https://fonts.googleapis.com/css2?family=Six+Caps&family=Fragment+Mono:ital@0;1&family=MuseoModerno:wght@400;600&family=Syne:wght@400;500;600;700;800&display=swap');
+    
+    .font-caps { font-family: 'Six Caps', sans-serif; }
+    .font-mono-frag { font-family: 'Fragment Mono', monospace; }
+    .font-logo { font-family: 'MuseoModerno', sans-serif; }
+    .font-body { font-family: 'Syne', sans-serif; } /* Unconventional, artistic font */
+    
+    .text-gold { color: #f9c041; }
+    .bg-gold { background-color: #f9c041; }
+    .border-gold { border-color: #f9c041; }
+    
+    /* Only text that gets gold is the glitch hover */
+    .glitch-hover:hover {
+      animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+      color: #f9c041;
+    }
+    
+    @keyframes glitch {
+      0% { transform: translate(0) }
+      20% { transform: translate(-2px, 2px) }
+      40% { transform: translate(-2px, -2px) }
+      60% { transform: translate(2px, 2px) }
+      80% { transform: translate(2px, -2px) }
+      100% { transform: translate(0) }
+    }
+
+    .dropdown-enter {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .dropdown-active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  `}</style>
+);
+
+/**
+ * Universal Dither Engine
+ * Supports multiple generative modes: 'city', 'orb', 'noise'
+ */
+const DitherCanvas = ({ mode = 'city', intensity = 1.0 }) => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    let animationFrameId;
+    let time = 0;
+
+    const resize = () => {
+      const parent = canvas.parentElement;
+      if (parent) {
+        canvas.width = parent.clientWidth;
+        canvas.height = parent.clientHeight;
+      }
+    };
+    
+    window.addEventListener('resize', resize);
+    resize();
+
+    // --- Drawing Modes ---
+
+    const drawCity = (t) => {
+      const cx = canvas.width * 0.5;
+      const cy = canvas.height * 0.5;
+      
+      // Helper for Iso Cubes
+      const drawBlock = (x, y, w, h, shade) => {
+        const angle = Math.PI / 6;
+        const dx = w * Math.cos(angle);
+        const dy = w * Math.sin(angle);
+        
+        ctx.save();
+        ctx.translate(x, y);
+        
+        // Top
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(dx, -dy);
+        ctx.lineTo(dx * 2, 0);
+        ctx.lineTo(dx, dy);
+        ctx.fillStyle = `rgb(${shade+40},${shade+40},${shade+40})`;
+        ctx.fill();
+        
+        // Right
+        ctx.beginPath();
+        ctx.moveTo(dx*2, 0);
+        ctx.lineTo(dx, dy);
+        ctx.lineTo(dx, dy+h);
+        ctx.lineTo(dx*2, h);
+        ctx.fillStyle = `rgb(${shade-20},${shade-20},${shade-20})`;
+        ctx.fill();
+
+        // Left
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(dx, dy);
+        ctx.lineTo(dx, dy+h);
+        ctx.lineTo(0, h);
+        ctx.fillStyle = `rgb(${shade},${shade},${shade})`;
+        ctx.fill();
+        ctx.restore();
+      };
+
+      // Abstract Monoliths
+      drawBlock(cx - 100, cy - 100 + Math.sin(t)*20, 80, 600, 100);
+      drawBlock(cx + 50, cy - 200 + Math.cos(t*0.8)*20, 100, 700, 80);
+      drawBlock(cx - 250, cy + 100 + Math.sin(t*1.2)*15, 60, 400, 120);
+      
+      // Floating debris
+      drawBlock(cx + 200, cy + Math.sin(t*2)*40, 30, 30, 200);
+    };
+
+    const drawOrb = (t) => {
+        const cx = canvas.width / 2;
+        const cy = canvas.height / 2;
+        const radius = Math.min(canvas.width, canvas.height) * 0.3;
+        
+        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * 1.5);
+        grad.addColorStop(0, '#fff');
+        grad.addColorStop(0.5, '#444');
+        grad.addColorStop(1, '#000');
+        
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        
+        // Deformed sphere
+        for(let i=0; i<Math.PI*2; i+=0.1) {
+           const r = radius + Math.sin(i*5 + t)*20 + Math.cos(i*3 - t)*20;
+           const x = cx + Math.cos(i) * r;
+           const y = cy + Math.sin(i) * r;
+           if(i===0) ctx.moveTo(x,y);
+           else ctx.lineTo(x,y);
+        }
+        ctx.fill();
+    };
+
+    const drawNoise = (t) => {
+        // Generate scrolling scanlines
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        for(let i=0; i<10; i++) {
+            const offset = (t * 100 + i * 200) % (canvas.height + 200) - 100;
+            gradient.addColorStop(Math.max(0, Math.min(1, offset/canvas.height)), '#000');
+            gradient.addColorStop(Math.max(0, Math.min(1, (offset+50)/canvas.height)), '#444');
+            gradient.addColorStop(Math.max(0, Math.min(1, (offset+100)/canvas.height)), '#000');
+        }
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0,0,canvas.width, canvas.height);
+    };
+
+    const render = () => {
+      time += 0.01 * intensity;
+      
+      // Clear Background
+      ctx.fillStyle = '#000'; // Base black
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw Source
+      if (mode === 'city') drawCity(time);
+      if (mode === 'orb') drawOrb(time);
+      if (mode === 'noise') drawNoise(time);
+
+      // DITHER ALGORITHM
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+      
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const avg = (r + g + b) / 3;
+        
+        // Bayer-like ordered dither logic mixed with noise
+        const x = (i / 4) % canvas.width;
+        const y = Math.floor((i / 4) / canvas.width);
+        
+        // Pattern offset
+        const pattern = ((x % 4) * 4 + (y % 4)) * 16; 
+        
+        // Mix ordered pattern with random noise for that "crunchy" look
+        const noise = Math.random() * 50 - 25;
+        const threshold = pattern + noise;
+        
+        const val = avg > threshold ? 255 : 0;
+
+        // Apply Gold Tint in specific modes if brightness is high
+        if (mode === 'orb' && val === 255 && Math.random() > 0.8) {
+            data[i] = 249; // R
+            data[i + 1] = 192; // G
+            data[i + 2] = 65; // B - Gold color
+        } else {
+            data[i] = val;
+            data[i + 1] = val;
+            data[i + 2] = val;
+        }
+      }
+
+      ctx.putImageData(imageData, 0, 0);
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [mode]);
+
+  return <canvas ref={canvasRef} className="w-full h-full absolute inset-0 opacity-60 mix-blend-screen pointer-events-none" />;
+};
+
+const Navbar = () => {
+  const [isChaptersOpen, setChaptersOpen] = useState(false);
+
+  return (
+    // Added z-[100] and removed mix-blend-difference to sit on top
+    // Added backdrop-blur and slight bg for readability over dither
+    <nav className="fixed top-0 left-0 right-0 z-[100] text-white py-6 px-6 md:px-12 flex justify-between items-center bg-black/10 backdrop-blur-sm border-b border-white/5">
+      <div className="flex flex-col gap-0 group cursor-pointer">
+         {/* Lowercase mtc as requested */}
+         <span className="font-logo text-4xl font-semibold tracking-tight">mtc</span>
+         <span className="font-mono-frag text-[10px] tracking-widest opacity-0 group-hover:opacity-100 transition-opacity text-right">COLLABORATIVE</span>
+      </div>
+
+      <div className="hidden md:flex gap-12 font-mono-frag text-xs tracking-tighter items-center h-full">
+         <a href="#" className="hover:text-gold transition-colors decoration-2">ABOUT</a>
+         
+         {/* Chapters Dropdown - Centered and vertically aligned */}
+         <div 
+            className="relative h-full flex items-center"
+            onMouseEnter={() => setChaptersOpen(true)}
+            onMouseLeave={() => setChaptersOpen(false)}
+         >
+            <button className="flex items-center gap-1 hover:text-gold transition-colors decoration-2 focus:outline-none py-2">
+                CHAPTERS <ChevronDown size={10} />
+            </button>
+            
+            {isChaptersOpen && (
+                // Centered dropdown using left-1/2 -translate-x-1/2
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 dropdown-enter dropdown-active">
+                    <div className="bg-black border border-white/20 p-2 flex flex-col gap-1 min-w-[140px] backdrop-blur-md shadow-xl">
+                        <a href="#" className="hover:bg-white hover:text-black px-3 py-2 transition-colors block text-center font-body text-sm font-bold">YOUTH</a>
+                        <a href="#" className="hover:bg-white hover:text-black px-3 py-2 transition-colors block text-center font-body text-sm font-bold">UNIVERSITY</a>
+                        <a href="#" className="hover:bg-white hover:text-black px-3 py-2 transition-colors block text-center font-body text-sm font-bold">INDUSTRY</a>
+                    </div>
+                </div>
+            )}
+         </div>
+
+         <a href="#" className="hover:text-gold transition-colors decoration-2">DONATE</a>
+      </div>
+
+      <div>
+         <button className="font-caps text-3xl hover:bg-gold hover:text-black px-5 py-1 transition-colors border border-gold bg-black text-gold">
+            JOIN_US
+         </button>
+      </div>
+    </nav>
+  );
+};
+
+const Hero = () => {
+  return (
+    <section className="relative min-h-screen bg-[#050505] text-white overflow-hidden flex flex-col justify-center">
+      {/* Background Layers */}
+      <div className="absolute inset-0 z-0">
+         <DitherCanvas mode="city" intensity={1.5} />
+      </div>
+      
+      {/* Huge Typography Layer */}
+      <div className="relative z-10 px-6 md:px-12 pt-20 w-full">
+         <div className="max-w-[1600px] mx-auto">
+            <div className="flex flex-col items-start relative">
+               <h1 className="font-caps text-[25vw] leading-[0.8] text-white mix-blend-difference select-none animate-fade-in">
+                  MUSLIM TECH
+               </h1>
+               <div className="flex flex-col md:flex-row w-full justify-between items-end border-t border-white/20 pt-8 mt-4">
+                  {/* Removed Gold Text, reverted to White */}
+                  <h1 className="font-caps text-[15vw] leading-[0.8] text-white mix-blend-difference select-none md:text-right w-full">
+                     COLLABORATIVE
+                  </h1>
+                  <div className="md:max-w-sm font-body text-lg md:text-xl leading-tight text-gray-400 md:mb-12 md:mr-12 mix-blend-plus-lighter tracking-tight">
+                     we create <span className="text-white font-bold">muslim builders</span> who wield the tools of tomorrow.
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+    </section>
+  );
+};
+
+const Marquee = () => {
+  return (
+    <div className="bg-white text-black py-4 overflow-hidden border-y border-black">
+       <div className="whitespace-nowrap animate-marquee font-mono-frag text-sm flex gap-8">
+          {[...Array(10)].map((_, i) => (
+             <span key={i} className="flex items-center gap-2">
+                <Disc size={14} className="animate-spin text-gold"/> 
+                BUILDING THE FUTURE
+                <span className="font-body italic font-semibold text-gray-500 tracking-tight">with tangible impact</span>
+             </span>
+          ))}
+       </div>
+       <style>{`
+         .animate-marquee { animation: marquee 20s linear infinite; }
+         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+       `}</style>
+    </div>
+  )
+}
+
+const FeatureBlock = ({ number, title, desc, align = 'left' }) => {
+  return (
+    <div className={`py-32 border-b border-white/20 relative group ${align === 'right' ? 'md:text-right' : ''}`}>
+       <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          {/* Dither Orb visual appearing on hover */}
+          <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-difference ${align === 'right' ? 'left-20' : 'right-20'}`}>
+             <DitherCanvas mode="orb" intensity={2} />
+          </div>
+
+          <div className={`md:col-span-8 ${align === 'right' ? 'md:col-start-5' : ''} relative z-10`}>
+             <div className="font-mono-frag text-xs mb-4 flex items-center gap-4 text-gray-500 justify-start md:justify-inherit">
+                {/* Gold Border Only */}
+                <span className="border border-gold rounded-full w-6 h-6 flex items-center justify-center text-white font-bold">{number}</span>
+                <span className="text-white">PATHWAY_0{number}</span>
+             </div>
+             <h2 className="font-caps text-[12vw] md:text-[8rem] leading-[0.8] mb-8 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r from-white to-gray-500 transition-all">
+                {title}
+             </h2>
+             {/* Using Syne font here */}
+             <p className={`font-body text-2xl md:text-4xl font-bold text-gray-400 leading-tight max-w-xl lowercase tracking-tight ${align === 'right' ? 'ml-auto' : ''}`}>
+                {desc}
+             </p>
+          </div>
+       </div>
+    </div>
+  )
+}
+
+const Features = () => {
+  return (
+    <section className="bg-[#0a0a0a] text-white">
+       <Marquee />
+       <FeatureBlock 
+          number="1"
+          title="MAKE"
+          desc="ship products. learn by doing, not watching."
+       />
+       <FeatureBlock 
+          align="right"
+          number="2"
+          title="TEACH"
+          desc="invest in the next gen. mentorship that matters."
+       />
+       <FeatureBlock 
+          number="3"
+          title="CONNECT"
+          desc="build alongside local makers. hack, ship, grow."
+       />
+    </section>
+  );
+};
+
+const InteractiveFooter = () => {
+   return (
+      <footer className="relative bg-black text-white h-[80vh] flex flex-col justify-between overflow-hidden border-t border-white/20">
+         {/* Background Noise */}
+         <div className="absolute inset-0 opacity-20">
+            <DitherCanvas mode="noise" intensity={0.5} />
+         </div>
+
+         <div className="relative z-10 p-6 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-12 font-mono-frag text-xs">
+            <div className="space-y-6">
+               <div className="font-logo text-4xl lowercase">mtc</div>
+               <p className="text-gray-500 max-w-[150px]">
+                  global community<br/>
+                  est. 2023<br/>
+                  501(c)(3)
+               </p>
+            </div>
+            <div>
+               <div className="text-gray-500 mb-4">INDEX</div>
+               <ul className="space-y-2">
+                  <li className="hover:translate-x-2 transition-transform cursor-pointer hover:text-white">about</li>
+                  <li className="hover:translate-x-2 transition-transform cursor-pointer hover:text-white">chapters</li>
+                  <li className="hover:translate-x-2 transition-transform cursor-pointer hover:text-white">donate</li>
+               </ul>
+            </div>
+            <div>
+               <div className="text-gray-500 mb-4">LEGAL</div>
+               <ul className="space-y-2">
+                  <li className="hover:translate-x-2 transition-transform cursor-pointer hover:text-white">terms</li>
+                  <li className="hover:translate-x-2 transition-transform cursor-pointer hover:text-white">privacy</li>
+               </ul>
+            </div>
+            <div className="col-span-2 md:col-span-1">
+               <div className="border border-white/20 p-4 h-full flex items-center justify-center hover:bg-gold hover:text-black transition-colors cursor-pointer group">
+                  <span className="font-caps text-2xl flex items-center gap-2">
+                     JOIN_COMMUNITY <ArrowRight className="group-hover:translate-x-2 transition-transform"/>
+                  </span>
+               </div>
+            </div>
+         </div>
+
+         <div className="relative z-10">
+            <h1 className="font-caps text-[30vw] leading-[0.75] text-center select-none mix-blend-difference opacity-50">
+               BUILDERS
+            </h1>
+         </div>
+      </footer>
+   )
+}
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-black text-white cursor-crosshair selection:bg-gold selection:text-black">
+      <FontStyles />
+      <Navbar />
+      <Hero />
+      <Features />
+      <InteractiveFooter />
+    </div>
+  );
+}
