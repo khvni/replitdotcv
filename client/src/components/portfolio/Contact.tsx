@@ -5,9 +5,21 @@ import DitherCanvas from "../ui/DitherCanvas";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-32 bg-[#0B1419] border-t border-white/10 relative overflow-hidden">
+    <section id="contact" className="py-32 bg-[#F26207] border-t border-white/10 relative overflow-hidden">
+      {/* Gradient Banner Top */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#0B1419]/50 to-transparent pointer-events-none z-20" />
+
+      {/* Grid Background */}
+      <div 
+        className="absolute inset-0 opacity-20 pointer-events-none"
+        style={{
+            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+        }}
+      />
+      
       {/* Dither Background (Orb for differentiation) */}
-      <DitherCanvas mode="orb" className="opacity-30 mix-blend-screen" />
+      <DitherCanvas mode="orb" className="opacity-10 mix-blend-overlay" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="bg-[#1B252B] border border-white/10 rounded-lg p-12 md:p-24 text-center max-w-4xl mx-auto shadow-2xl">
@@ -38,7 +50,8 @@ export default function Contact() {
               rel="noreferrer"
               className="bg-[#1B252B] text-white border border-white/20 font-mono font-bold text-lg px-8 py-4 rounded hover:bg-[#232C30] hover:border-white/40 transition-all flex items-center justify-center gap-3 uppercase"
             >
-               DM on Twitter <ArrowRight className="w-5 h-5" />
+               DM on X 
+               <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
             </a>
           </div>
         </div>

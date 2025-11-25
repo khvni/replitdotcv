@@ -17,7 +17,7 @@ const navStructure = [
     name: "Teach", 
     type: "dropdown",
     items: [
-      { name: "CS @ Berkeley", href: "/cs-berkeley" },
+      { name: "Berkeley CS", href: "/cs-berkeley" },
       { name: "MTC", href: "/mtc" },
       { name: "Replit", href: "/replit" }
     ]
@@ -114,7 +114,7 @@ export default function Navbar() {
             href="mailto:byalikhani@gmail.com"
             className="bg-transparent text-[#F26207] border-2 border-[#F26207] hover:bg-[#F26207] hover:text-white font-bold text-sm px-6 py-2 rounded-none transition-all font-mono uppercase tracking-wider flex items-center gap-2"
           >
-            HIRE ALI <Mail className="w-4 h-4" />
+            HIRE <Mail className="w-4 h-4" />
           </a>
         </div>
 
@@ -166,7 +166,7 @@ export default function Navbar() {
                 href="mailto:byalikhani@gmail.com"
                 className="bg-[#F26207] text-white font-bold text-lg py-4 w-full text-center uppercase font-mono hover:bg-[#D95200] flex items-center justify-center gap-2"
               >
-                HIRE ALI <Mail className="w-5 h-5" />
+                HIRE <Mail className="w-5 h-5" />
               </a>
             </div>
           </motion.div>

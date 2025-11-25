@@ -55,10 +55,10 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="w-full max-w-2xl bg-[#1C232B] rounded-xl border border-[#2B323B] shadow-2xl overflow-hidden mb-24 relative font-mono"
+          className="w-full max-w-2xl bg-[#0e1525] rounded-xl border border-[#2B323B] shadow-2xl overflow-hidden mb-24 relative font-mono"
         >
            {/* Prompt Header */}
-           <div className="flex items-center justify-between px-4 py-3 border-b border-[#2B323B] bg-[#1C232B]">
+           <div className="flex items-center justify-between px-4 py-3 border-b border-[#2B323B] bg-[#0e1525]">
               <div className="flex gap-2">
                 <div className="px-3 py-1 rounded-full bg-[#2B323B] text-xs font-medium text-[#AEBEC7] flex items-center gap-2">
                   <Sparkles className="w-3 h-3 text-[#F26207]" /> 
@@ -108,15 +108,15 @@ export default function Hero() {
 
         {/* Trusted By Logos */}
         <div className="w-full max-w-5xl mx-auto">
-          <p className="text-sm text-[#5D6C76] mb-6 font-medium uppercase tracking-wider font-mono">Trusted By & Building With</p>
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 opacity-60">
+          <p className="text-sm text-[#F26207] mb-6 font-medium uppercase tracking-wider font-mono">Trusted By:</p>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 opacity-80">
             {logos.map((logo, index) => (
               <a 
                 key={index} 
                 href={logo.url} 
                 target="_blank" 
                 rel="noreferrer"
-                className="text-[#fdfdfd] hover:text-[#f9c041] transition-colors font-medium text-sm md:text-base flex items-center gap-2 font-mono"
+                className="text-white hover:text-[#f9c041] transition-colors font-medium text-sm md:text-base flex items-center gap-2 font-mono"
               >
                 {logo.name}
               </a>
@@ -125,6 +125,9 @@ export default function Hero() {
         </div>
 
       </div>
+      
+      {/* Bottom Gradient Banner */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0B1419] to-transparent pointer-events-none z-10" />
     </section>
   );
 }
