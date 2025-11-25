@@ -25,7 +25,7 @@
   --color-ring: hsl(var(--ring));
   
   /* Typography aligned with Replit's Hack homage + Unique Body Font */
-  --font-display: 'Golos Text', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
   --font-pixel: 'Pixelify Sans', display;
   --font-hack: 'Hack', monospace;
   --font-sans: 'IBM Plex Sans', sans-serif;
