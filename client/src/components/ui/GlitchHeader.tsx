@@ -11,14 +11,14 @@ export default function GlitchHeader({ text, className = "" }: GlitchHeaderProps
   useEffect(() => {
     const interval = setInterval(() => {
       const newSet = new Set<number>();
-      // Randomly select about 10-20% of characters to be pixelated
+      // Randomly select about 5% of characters to be pixelated (reduced from 15%)
       for (let i = 0; i < text.length; i++) {
-        if (Math.random() < 0.15) {
+        if (Math.random() < 0.05) {
           newSet.add(i);
         }
       }
       setPixelatedIndices(newSet);
-    }, 200); // Update every 200ms
+    }, 2000); // Update every 2000ms (drastically increased from 200ms)
 
     return () => clearInterval(interval);
   }, [text]);

@@ -1,10 +1,11 @@
 import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
-import About from "@/components/portfolio/About"; // Keeping About as a secondary section if needed, or removing
+import About from "@/components/portfolio/About"; 
 import AgentSection from "@/components/portfolio/AgentSection";
 import Contact from "@/components/portfolio/Contact";
 import ReplitBadge from "@/components/portfolio/ReplitBadge";
 import Terminal from "@/components/portfolio/Terminal";
+import Footer from "@/components/portfolio/Footer";
 
 export default function Home() {
   return (
@@ -13,14 +14,11 @@ export default function Home() {
       
       <main>
         <Hero />
-        {/* The AgentSection replaces the standard "Work" grid with the orange Replit-style layout */}
         <AgentSection /> 
         <Contact />
       </main>
 
-      <footer className="py-8 border-t border-white/5 text-center text-[#AEBEC7] text-sm bg-[#0B1419]">
-        <p>© 2025 Ali Khani. Built with Replit Agent.</p>
-      </footer>
+      <Footer />
 
       <ReplitBadge />
       <Terminal />

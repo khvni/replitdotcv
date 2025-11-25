@@ -1,18 +1,36 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Github, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Menu, X, ChevronDown, Mail } from "lucide-react";
 
-const navItems = [
-  { name: "WORK", href: "#work" },
-  { name: "MTC", href: "#mtc" },
-  { name: "EXPERIENCE", href: "#experience" },
-  { name: "CONTACT", href: "#contact" },
+const navStructure = [
+  { 
+    name: "Making", 
+    type: "dropdown",
+    items: [
+      { name: "Projects", href: "/projects" },
+      { name: "Professional", href: "/professional" }
+    ]
+  },
+  { 
+    name: "Teaching", 
+    href: "/teaching",
+    type: "link"
+  },
+  { 
+    name: "Connecting", 
+    type: "dropdown",
+    items: [
+      { name: "Communities", href: "/communities" },
+      { name: "Conferences", href: "/conferences" }
+    ]
+  }
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,22 +40,15 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 border-b-2 ${
         isScrolled ? "bg-[#0B1419] border-[#F26207] py-3" : "bg-[#0B1419]/80 backdrop-blur-md border-transparent py-5"
       }`}
+      onMouseLeave={() => setActiveDropdown(null)}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group z-50 relative">
            <div className="h-8 w-8 bg-[#F26207] flex items-center justify-center transform -rotate-3 group-hover:rotate-0 transition-transform">
              <span className="font-bold text-black font-mono text-lg">AK</span>
            </div>
@@ -48,40 +59,62 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => scrollToSection(item.href)}
-              className="text-sm font-bold text-[#AEBEC7] hover:text-white hover:bg-[#F26207] hover:text-black px-2 py-1 transition-all font-mono uppercase tracking-wide"
+          {navStructure.map((item) => (
+            <div 
+              key={item.name} 
+              className="relative group"
+              onMouseEnter={() => item.type === 'dropdown' && setActiveDropdown(item.name)}
             >
-              {item.name}
-            </button>
+              {item.type === 'dropdown' ? (
+                <button 
+                  className={`flex items-center gap-1 text-sm font-bold hover:text-[#F26207] px-2 py-1 transition-all font-mono uppercase tracking-wide ${
+                    activeDropdown === item.name ? "text-[#F26207]" : "text-[#AEBEC7]"
+                  }`}
+                >
+                  {item.name} <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? "rotate-180" : ""}`} />
+                </button>
+              ) : (
+                <Link href={item.href || "#"}>
+                  <a className="text-sm font-bold text-[#AEBEC7] hover:text-[#F26207] px-2 py-1 transition-all font-mono uppercase tracking-wide">
+                    {item.name}
+                  </a>
+                </Link>
+              )}
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {activeDropdown === item.name && item.items && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 mt-2 w-48 bg-[#1C232B] border border-[#2B323B] shadow-xl rounded-lg overflow-hidden py-2 z-50"
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    {item.items.map((subItem) => (
+                      <Link key={subItem.name} href={subItem.href}>
+                        <a className="block px-4 py-2 text-sm text-[#AEBEC7] hover:text-white hover:bg-[#2B323B] font-mono uppercase transition-colors">
+                          {subItem.name}
+                        </a>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           ))}
-          <div className="flex items-center space-x-4 pl-6 border-l-2 border-white/10">
-            <a href="https://github.com/khvni" target="_blank" className="text-[#AEBEC7] hover:text-[#F26207] transition-colors">
-              <Github className="w-5 h-5" />
-            </a>
-            <a href="https://x.com/alikhvni" target="_blank" className="text-[#AEBEC7] hover:text-[#F26207] transition-colors">
-              <Twitter className="w-5 h-5" />
-            </a>
-            <a href="https://linkedin.com/in/khvni" target="_blank" className="text-[#AEBEC7] hover:text-[#F26207] transition-colors">
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a href="https://instagram.com/alikha.ni" target="_blank" className="text-[#AEBEC7] hover:text-[#F26207] transition-colors">
-              <Instagram className="w-5 h-5" />
-            </a>
-          </div>
-          <button 
-            onClick={() => scrollToSection('#contact')}
-            className="bg-transparent text-[#F26207] border-2 border-[#F26207] hover:bg-[#F26207] hover:text-white font-bold text-sm px-6 py-2 rounded-none transition-all font-mono uppercase tracking-wider"
+
+          <a 
+            href="mailto:byalikhani@gmail.com"
+            className="bg-transparent text-[#F26207] border-2 border-[#F26207] hover:bg-[#F26207] hover:text-white font-bold text-sm px-6 py-2 rounded-none transition-all font-mono uppercase tracking-wider flex items-center gap-2"
           >
-            HIRE ALI
-          </button>
+            HIRE ALI <Mail className="w-4 h-4" />
+          </a>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-white p-2 border border-white/20 rounded hover:bg-white/10"
+          className="md:hidden text-white p-2 border border-white/20 rounded hover:bg-white/10 z-50 relative"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X /> : <Menu />}
@@ -98,29 +131,37 @@ export default function Navbar() {
             className="md:hidden bg-[#0B1419] border-b-2 border-[#F26207] overflow-hidden absolute top-full left-0 right-0 shadow-2xl"
           >
             <div className="container mx-auto px-6 py-8 flex flex-col space-y-6">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-2xl font-bold text-left text-white hover:text-[#F26207] font-mono uppercase"
-                >
-                  {item.name}
-                </button>
+              {navStructure.map((item) => (
+                <div key={item.name} className="flex flex-col space-y-2">
+                   {item.type === 'dropdown' ? (
+                     <>
+                       <span className="text-2xl font-bold text-left text-white font-mono uppercase border-b border-white/10 pb-2 mb-2">
+                         {item.name}
+                       </span>
+                       {item.items?.map((subItem) => (
+                         <Link key={subItem.name} href={subItem.href}>
+                           <a className="text-lg font-medium text-[#AEBEC7] hover:text-[#F26207] font-mono uppercase pl-4 block">
+                             {subItem.name}
+                           </a>
+                         </Link>
+                       ))}
+                     </>
+                   ) : (
+                     <Link href={item.href || "#"}>
+                        <a className="text-2xl font-bold text-left text-white hover:text-[#F26207] font-mono uppercase">
+                          {item.name}
+                        </a>
+                     </Link>
+                   )}
+                </div>
               ))}
-              <div className="flex space-x-6 pt-6 border-t-2 border-white/10">
-                <a href="https://github.com/khvni" className="text-[#AEBEC7] hover:text-white">
-                  <Github className="w-8 h-8" />
-                </a>
-                <a href="https://x.com/alikhvni" className="text-[#AEBEC7] hover:text-white">
-                  <Twitter className="w-8 h-8" />
-                </a>
-              </div>
-              <button 
-                onClick={() => scrollToSection('#contact')}
-                className="bg-[#F26207] text-white font-bold text-lg py-4 w-full text-center uppercase font-mono hover:bg-[#D95200]"
+              
+              <a 
+                href="mailto:byalikhani@gmail.com"
+                className="bg-[#F26207] text-white font-bold text-lg py-4 w-full text-center uppercase font-mono hover:bg-[#D95200] flex items-center justify-center gap-2"
               >
-                HIRE ALI
-              </button>
+                HIRE ALI <Mail className="w-5 h-5" />
+              </a>
             </div>
           </motion.div>
         )}
