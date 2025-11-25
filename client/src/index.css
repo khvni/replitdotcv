@@ -24,8 +24,8 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   
-  /* Typography Update */
-  --font-display: 'Unbounded', sans-serif;
+  /* Typography Update - Tech/Modern but Clean */
+  --font-display: 'Sora', sans-serif;
   --font-pixel: 'Pixelify Sans', display;
   --font-hack: 'Hack', monospace;
   --font-sans: 'IBM Plex Sans', sans-serif;

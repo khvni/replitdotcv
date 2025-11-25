@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Terminal, Play, Cpu, Users, Mic, Code, Zap, PenTool, Globe } from "lucide-react";
+import { ExternalLink, Users, Mic, Code, Zap, PenTool } from "lucide-react";
 
 import mtcImage from "@assets/generated_images/vibrant_community_event_landing_page_mockup.png";
 import codeImage from "@assets/generated_images/code_education_platform_interface_mockup.png";
@@ -7,42 +7,42 @@ import bloomImage from "@assets/generated_images/modern_dark_mode_dashboard_ui_m
 
 const features = [
   {
-    title: "MTC: A National Movement",
-    description: "I didn't just join a club; I built a national infrastructure. As Founder and Head Honcho, I scaled MTC to 30+ university chapters and established professional city chapters in SF, Seattle, Dallas, and NYC (Atlanta, SoCal, Chicago incoming). We connect thousands of Muslim builders through hackathons, career fairs, and workshops.",
+    title: "MTC Founder",
+    description: "Built MTC from zero to 30+ chapters. Connected thousands of Muslim builders. No playbook, just execution.",
     image: mtcImage,
-    tags: ["Founder", "30+ Chapters", "National Scale"],
+    tags: ["Scale", "Leadership"],
     link: "https://mtc.so",
     icon: Users
   },
   {
-    title: "Rapid POC Shipping",
-    description: "I don't just talk about AI; I build with it. I leverage Cursor, Claude Code, Replit, and Gemini to ship proofs-of-concept in hours, not weeks. I'm also an active contributor to open-source AI tools like Cline and Claude Code. Speed is my feature.",
+    title: "Rapid Builder",
+    description: "I use AI to build fast. Cursor, Replit, Gemini. Ideas become demos in hours. Speed is my feature.",
     image: codeImage,
-    tags: ["Cursor", "Replit", "Open Source"],
-    link: "/projects", // Placeholder for projects page
+    tags: ["AI Native", "Shipping"],
+    link: "/projects",
     icon: Zap
   },
   {
-    title: "Founder & Security Engineer",
-    description: "My technical chops are battle-tested. I founded Bloom (YC Startup School), secured products at Five9, and engineered at Convoy. I understand the full stack—from funding to deployment to securing the pipeline.",
+    title: "Technical Depth",
+    description: "Founded Bloom (YC Startup School). Secured Five9. Engineered at Convoy. I know the stack.",
     image: bloomImage,
-    tags: ["YC Startup School", "Product Security", "Full Stack"],
+    tags: ["Full Stack", "Security"],
     link: "https://withbloom.app",
     icon: Code
   },
   {
-    title: "Voice of the Developer",
-    description: "6M+ views on Quora. My 'Vibe Coding' Replit workshop on X hit 16k+ views. I write on Substack and create content that resonates because it comes from a place of deep technical understanding, not marketing fluff.",
+    title: "Content Creator",
+    description: "16k+ views on Vibe Coding. 6M+ on Quora. I write for builders, not algorithms.",
     image: mtcImage, 
-    tags: ["16k+ Views", "Technical Writing", "Influence"],
+    tags: ["Viral", "Writing"],
     link: "https://substack.com/@khvni",
     icon: PenTool
   },
   {
-    title: "Public Speaking",
-    description: "I command the stage. Featured speaker at OPEN SV Annual Forum (2024, 2025), ICNA West 2025, and TEDx. I've led workshops at Apex Mosque's NC Summit and MSA West. I turn technical topics into compelling narratives.",
+    title: "Speaker",
+    description: "TEDx. OPEN SV. ICNA. I talk about what I've actually built. No fluff.",
     image: codeImage,
-    tags: ["TEDx", "Keynotes", "Workshops"],
+    tags: ["Keynotes", "Events"],
     link: "#speaking",
     icon: Mic
   }
@@ -52,21 +52,17 @@ export default function AgentSection() {
   return (
     <section id="mtc" className="py-0 bg-[#F26207] text-white relative overflow-hidden">
       {/* Diagonal Stripes Pattern */}
-      <div className="absolute inset-0 opacity-10" 
+      <div className="absolute inset-0 opacity-5" 
         style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #000 10px, #000 20px)' }} 
       />
 
       <div className="container mx-auto px-6 py-32 relative z-10">
-        <div className="text-center max-w-5xl mx-auto mb-32">
-          <div className="inline-block bg-black text-white px-6 py-2 font-mono font-bold uppercase tracking-widest transform -rotate-1 mb-6 border border-white">
-            Agent Capabilities
-          </div>
-          <h2 className="text-5xl md:text-8xl font-display font-black mb-8 leading-none uppercase">
-            High Agency <br/>
-            <span className="text-black stroke-white">Builder</span>
+        <div className="text-center max-w-5xl mx-auto mb-24">
+          <h2 className="text-5xl md:text-7xl font-display font-bold mb-6 leading-none uppercase text-black">
+            High Agency
           </h2>
-          <p className="text-xl md:text-2xl font-sans font-medium max-w-3xl mx-auto leading-relaxed">
-            I don't need a playbook. I write them. Here is how I drive growth and adoption.
+          <p className="text-xl md:text-2xl font-sans font-medium max-w-2xl mx-auto leading-relaxed text-black/80">
+            I don't wait for permission. I build systems.
           </p>
         </div>
 
@@ -84,38 +80,33 @@ export default function AgentSection() {
             >
               {/* Visual Side */}
               <div className="flex-1 w-full">
-                <div className="relative rounded-none border-4 border-black bg-black shadow-[12px_12px_0px_0px_#000000] overflow-hidden group">
+                <div className="relative rounded-lg border border-black/10 bg-black/5 overflow-hidden shadow-xl group">
                   <img 
                     src={feature.image} 
                     alt={feature.title}
                     className="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                   />
-                  
-                  {/* Brutalist Label */}
-                  <div className="absolute top-0 left-0 bg-black text-white px-4 py-2 font-mono font-bold border-b-2 border-r-2 border-white">
-                    FEATURE_{index + 1}
-                  </div>
                 </div>
               </div>
 
               {/* Text Side */}
               <div className="flex-1 w-full flex flex-col justify-center text-left">
-                <div className="flex items-center gap-4 mb-6">
-                   <div className="p-3 bg-black rounded-none border-2 border-white">
-                     <feature.icon className="w-6 h-6 text-white" />
+                <div className="flex items-center gap-4 mb-4">
+                   <div className="p-2 bg-black rounded text-white">
+                     <feature.icon className="w-5 h-5" />
                    </div>
-                   <h3 className="text-3xl md:text-4xl font-display font-bold uppercase leading-none">
+                   <h3 className="text-3xl md:text-4xl font-display font-bold uppercase leading-none text-black">
                      {feature.title}
                    </h3>
                 </div>
 
-                <p className="text-lg md:text-xl font-sans font-medium leading-relaxed mb-8 opacity-90 border-l-4 border-black pl-6">
+                <p className="text-lg md:text-xl font-sans font-medium leading-relaxed mb-6 text-black/80">
                   {feature.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-3 mb-8">
+                <div className="flex flex-wrap gap-3 mb-6">
                   {feature.tags.map((tag, i) => (
-                    <span key={i} className="font-mono text-sm font-bold uppercase bg-white text-[#F26207] px-3 py-1 border border-black shadow-[2px_2px_0px_0px_#000000]">
+                    <span key={i} className="font-mono text-sm font-bold uppercase bg-white text-black px-3 py-1 border border-black/10">
                       {tag}
                     </span>
                   ))}
@@ -124,7 +115,7 @@ export default function AgentSection() {
                 <a 
                   href={feature.link}
                   target="_blank"
-                  className="self-start inline-flex items-center gap-2 font-display text-lg font-bold uppercase border-b-4 border-black pb-1 hover:text-black hover:border-white transition-colors"
+                  className="self-start inline-flex items-center gap-2 font-display text-lg font-bold uppercase text-black border-b-2 border-black pb-1 hover:opacity-70 transition-opacity"
                 >
                   View Evidence <ExternalLink className="w-5 h-5" />
                 </a>
