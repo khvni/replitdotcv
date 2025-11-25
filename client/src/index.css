@@ -24,40 +24,16 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   
-  /* Typography aligned with Replit's Hack homage + Unique Body Font */
-  --font-display: 'Space Grotesk', sans-serif;
+  /* Typography Update */
+  --font-display: 'Unbounded', sans-serif;
   --font-pixel: 'Pixelify Sans', display;
   --font-hack: 'Hack', monospace;
   --font-sans: 'IBM Plex Sans', sans-serif;
-  --font-mono: 'Space Mono', monospace;
   
   --radius: 0px;
 }
 
 :root {
-  /* Replit Light (Base) */
-  --background: 0 0% 100%;
-  --foreground: 210 14% 9%;
-  --card: 0 0% 100%;
-  --card-foreground: 210 14% 9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 210 14% 9%;
-  --primary: 23 94% 49%; /* #F26207 */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 210 20% 96%;
-  --secondary-foreground: 210 14% 9%;
-  --muted: 210 20% 96%;
-  --muted-foreground: 215 16% 47%;
-  --accent: 210 20% 96%;
-  --accent-foreground: 210 14% 9%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 220 13% 91%;
-  --input: 220 13% 91%;
-  --ring: 23 94% 49%;
-}
-
-.dark {
   /* Replit Dark Theme Exact Match */
   --background: 204 39% 7%; /* #0B1419 */
   --foreground: 200 18% 73%; /* #AEBEC7 */
@@ -66,6 +42,26 @@
   --popover: 204 39% 7%;
   --popover-foreground: 200 18% 73%;
   --primary: 23 94% 49%; /* #F26207 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 202 23% 14%;
+  --secondary-foreground: 200 18% 73%;
+  --muted: 202 23% 14%;
+  --muted-foreground: 200 10% 50%;
+  --accent: 202 23% 14%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 202 23% 14%;
+  --input: 202 23% 14%;
+  --ring: 23 94% 49%;
+}
+
+.dark {
+  --background: 204 39% 7%;
+  --foreground: 200 18% 73%;
+  --card: 202 23% 14%;
+  --card-foreground: 200 18% 73%;
+  --primary: 23 94% 49%;
   --primary-foreground: 0 0% 100%;
   --secondary: 202 23% 14%;
   --secondary-foreground: 200 18% 73%;
@@ -97,15 +93,7 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#F26207] to-[#FF8C42];
   }
   
-  .replit-card {
-    @apply bg-[#1B252B] border border-white/5 hover:border-[#F26207]/50 transition-all duration-300;
-  }
-  
-  .replit-button-primary {
-    @apply bg-[#F26207] text-white font-bold px-6 py-3 rounded-[4px] hover:bg-[#D95200] transition-all duration-200 shadow-[0_0_15px_rgba(242,98,7,0.2)] hover:shadow-[0_0_25px_rgba(242,98,7,0.4)];
-  }
-  
-  .replit-button-secondary {
-    @apply bg-[#1B252B] text-white border border-white/10 font-bold px-6 py-3 rounded-[4px] hover:bg-[#232C30] hover:border-white/20 transition-all duration-200;
+  .industrial-border {
+    @apply border border-white/10 border-l-4 border-l-[#F26207];
   }
 }

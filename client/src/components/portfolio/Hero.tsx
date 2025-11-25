@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
-import { Terminal } from "lucide-react";
+import { Terminal, ArrowRight } from "lucide-react";
 
 export default function Hero() {
-  // Function to render text with randomized pixelated characters
   const PixelatedText = ({ text, className }: { text: string, className?: string }) => {
     return (
       <span className={className}>
         {text.split('').map((char, i) => {
-          // Randomly choose some characters to be pixelated (every 3rd or 4th char approx)
           const isPixel = (i + 2) % 4 === 0 || (i + 5) % 7 === 0;
           return (
             <span key={i} className={isPixel ? "font-pixel" : ""}>
@@ -20,72 +18,92 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-32 pb-20">
+    <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-32 pb-20 bg-[#0B1419]">
+      {/* Industrial Grid Background */}
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" 
+        style={{ 
+          backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }} 
+      />
+
       {/* Content */}
-      <div className="container relative z-20 px-6 text-center max-w-6xl mx-auto">
+      <div className="container relative z-20 px-6 text-center max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center"
         >
-          <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-display font-bold tracking-tighter mb-8 text-white leading-[0.9] uppercase">
-            ALI KHANI IS <br />
-            THE <span className="text-[#F26207]"><PixelatedText text="DEVREL AGENT" /></span>
+          {/* Neobrutalist Badge */}
+          <div className="mb-8 bg-[#F26207] text-black font-bold px-4 py-1 transform -rotate-2 border-2 border-white shadow-[4px_4px_0px_0px_#ffffff]">
+             <span className="font-mono uppercase tracking-tight">Status: Deployment Ready</span>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl lg:text-[8rem] font-display font-black tracking-tighter mb-8 text-white leading-[0.85] uppercase mix-blend-screen">
+            I Build <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F26207] via-white to-[#F26207] animate-gradient-x">Operating Systems</span> <br />
+            For <span className="text-[#F26207]"><PixelatedText text="Communities" /></span>
           </h1>
 
-          <p className="text-xl md:text-3xl text-[#AEBEC7] max-w-4xl mb-16 font-light leading-relaxed">
-            Turning <span className="text-white font-bold border-b-2 border-[#F26207]">1800+ students</span> and <span className="text-white font-bold border-b-2 border-[#F26207]">30+ communities</span> into shippers.
+          <p className="text-xl md:text-2xl text-[#AEBEC7] max-w-3xl mb-16 font-sans font-light leading-relaxed border-l-4 border-[#F26207] pl-6 text-left md:text-center md:border-none md:pl-0">
+            Don't just hire a DevRel. Hire a <span className="text-white font-bold">Founder-in-Residence</span>. <br className="hidden md:block"/>
+            I scale movements, ship products, and turn passive users into die-hard evangelists.
           </p>
 
-          {/* Search Bar / Prompt Input Simulation - Mirroring Replit's "Make me a game..." */}
+          {/* Search Bar / Prompt Input Simulation */}
           <div className="w-full max-w-3xl relative mb-24 group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#F26207]/40 to-[#F26207]/20 rounded-none blur opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative bg-[#1B252B] border-2 border-white/10 p-8 text-left shadow-2xl">
-              <div className="flex gap-3 mb-6">
-                <span className="bg-[#F26207]/10 text-xs font-bold text-[#F26207] px-3 py-1 rounded-full border border-[#F26207]/20 uppercase tracking-widest">Deployment Ready</span>
-                <span className="bg-white/5 text-xs font-bold text-[#AEBEC7] px-3 py-1 rounded-full border border-white/10 uppercase tracking-widest">High Agency</span>
-              </div>
-              
-              <div className="font-mono text-xl md:text-2xl text-white mb-8 leading-relaxed">
-                <span className="text-[#AEBEC7]">&gt; Initializing...</span><br/>
-                <span className="text-[#AEBEC7]">&gt; </span>
-                <span className="text-white font-bold">AliKhani.deploy()</span>
-                <span className="animate-pulse text-[#F26207] ml-1">_</span>
-                <br />
-                <span className="text-[#AEBEC7] text-lg mt-2 block">
-                  // Mission: Democratize software creation for the next billion users.
-                </span>
+            <div className="absolute -inset-2 bg-[#F26207] rounded-none opacity-20 group-hover:opacity-40 transition-opacity duration-500 blur-xl" />
+            <div className="relative bg-[#1B252B] border-2 border-white/20 p-0 text-left shadow-[8px_8px_0px_0px_#000000]">
+              {/* Terminal Header */}
+              <div className="bg-[#0B1419] px-4 py-2 border-b border-white/10 flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                <div className="w-3 h-3 rounded-full bg-green-500" />
+                <span className="ml-4 font-mono text-xs text-[#5d6c76]">ali_khani_portfolio — -zsh — 80x24</span>
               </div>
 
-              <div className="h-px bg-white/5 mb-6" />
+              <div className="p-8 font-mono text-lg md:text-xl text-white leading-relaxed">
+                <span className="text-[#AEBEC7]">$</span> <span className="text-[#F26207] font-bold">whoami</span>
+                <br/>
+                <span className="text-white block mt-2">
+                  > Founder @ MTC (30+ Chapters)<br/>
+                  > 1,800+ Students Taught<br/>
+                  > 16k+ Views on "Vibe Coding"<br/>
+                  > High-Agency Builder
+                </span>
+                <br/>
+                <span className="text-[#AEBEC7]">$</span> <span className="text-[#F26207] font-bold">deploy --production</span>
+                <span className="animate-pulse text-[#F26207] ml-1">_</span>
+              </div>
               
               <button 
                  onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full bg-[#F26207] text-white font-bold text-lg py-4 hover:bg-[#D95200] transition-all shadow-[0_0_20px_rgba(242,98,7,0.4)] hover:shadow-[0_0_40px_rgba(242,98,7,0.6)] flex items-center justify-center gap-3 uppercase tracking-wider font-display"
+                className="w-full bg-white text-black font-bold text-lg py-4 hover:bg-[#F26207] hover:text-white transition-all border-t-2 border-white/20 flex items-center justify-center gap-3 uppercase tracking-wider font-display"
               >
-                EXECUTE PROTOCOL <Terminal className="w-5 h-5" />
+                INITIATE HANDSHAKE <ArrowRight className="w-5 h-5" />
               </button>
             </div>
           </div>
         </motion.div>
         
-        {/* Social Proof / "Loved by..." Section */}
+        {/* Social Proof Ticker */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-center"
+          className="w-full overflow-hidden border-y border-white/10 py-4 bg-[#0B1419]/50 backdrop-blur"
         >
-          <p className="text-sm text-[#5d6c76] mb-8 uppercase tracking-[0.3em] font-bold">
-            IMPACT SCALED ACROSS
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-20 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-            <span className="text-2xl font-hack font-bold text-white tracking-tighter">UC BERKELEY</span>
-            <span className="text-2xl font-hack font-bold text-white tracking-tighter">MTC</span>
-            <span className="text-2xl font-hack font-bold text-white tracking-tighter">OPEN SV</span>
-            <span className="text-2xl font-hack font-bold text-white tracking-tighter">TEDx</span>
-            <span className="text-2xl font-hack font-bold text-white tracking-tighter">QUORA (6M+)</span>
+          <div className="flex justify-between items-center max-w-5xl mx-auto px-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+             <span className="font-hack text-lg font-bold">UC BERKELEY</span>
+             <span className="text-[#F26207] font-mono">/</span>
+             <span className="font-hack text-lg font-bold">MTC NATIONAL</span>
+             <span className="text-[#F26207] font-mono">/</span>
+             <span className="font-hack text-lg font-bold">OPEN SV</span>
+             <span className="text-[#F26207] font-mono">/</span>
+             <span className="font-hack text-lg font-bold">TEDx</span>
+             <span className="text-[#F26207] font-mono">/</span>
+             <span className="font-hack text-lg font-bold">QUORA (6M+)</span>
           </div>
         </motion.div>
       </div>
