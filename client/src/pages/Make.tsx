@@ -10,7 +10,7 @@ export default function Make() {
     <div className="min-h-screen bg-[#0e1525] text-white flex flex-col">
       <Navbar />
       <main className="flex-grow pt-32 pb-20 relative overflow-hidden">
-        <DitherCanvas mode="city" className="opacity-20 mix-blend-screen fixed inset-0 pointer-events-none" />
+        <DitherCanvas mode="chip" className="opacity-20 mix-blend-screen fixed inset-0 pointer-events-none" />
         <StaticBackground />
         
         <div className="container mx-auto px-6 relative z-10">

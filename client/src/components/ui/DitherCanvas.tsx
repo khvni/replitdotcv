@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 interface DitherCanvasProps {
-  mode?: 'city' | 'orb' | 'noise';
+  mode?: 'city' | 'orb' | 'noise' | 'net' | 'chip';
   intensity?: number;
   className?: string;
 }
@@ -105,6 +105,81 @@ export default function DitherCanvas({ mode = 'city', intensity = 1.0, className
         ctx.fill();
     };
 
+    const drawNet = (t: number) => {
+        const cx = canvas.width / 2;
+        const cy = canvas.height / 2;
+        
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        
+        // Draw connecting nodes
+        for(let i=0; i<20; i++) {
+            const x = cx + Math.cos(i * 1.5 + t * 0.5) * 300;
+            const y = cy + Math.sin(i * 2.1 + t * 0.3) * 200;
+            
+            ctx.beginPath();
+            ctx.arc(x, y, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+            
+            // Connections
+            for(let j=0; j<5; j++) {
+                 const x2 = cx + Math.cos((i+j) * 1.5 + t * 0.5) * 300;
+                 const y2 = cy + Math.sin((i+j) * 2.1 + t * 0.3) * 200;
+                 
+                 const dist = Math.sqrt(Math.pow(x-x2, 2) + Math.pow(y-y2, 2));
+                 if(dist < 200) {
+                     ctx.beginPath();
+                     ctx.moveTo(x, y);
+                     ctx.lineTo(x2, y2);
+                     ctx.strokeStyle = `rgba(255, 255, 255, ${1 - dist/200})`;
+                     ctx.stroke();
+                 }
+            }
+        }
+    };
+
+    const drawChip = (t: number) => {
+        const cx = canvas.width / 2;
+        const cy = canvas.height / 2;
+        const scale = 2; // Zoom in
+        
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(scale, scale);
+        ctx.translate(-cx, -cy);
+
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+
+        // Circuit paths
+        for(let i=0; i<20; i++) {
+            const offset = (i * 50 + t * 50) % canvas.height;
+            const x = (i * 100) % canvas.width;
+            
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, offset);
+            ctx.lineTo(x + 50, offset + 50);
+            ctx.lineTo(x + 50, canvas.height);
+            ctx.stroke();
+            
+            // Data packets
+            const packetY = (t * 200 + i * 100) % canvas.height;
+            if (packetY > offset && packetY < offset + 50) {
+                 ctx.fillStyle = '#fff';
+                 ctx.fillRect(x + (packetY - offset), packetY, 10, 10);
+            } else if (packetY > offset + 50) {
+                 ctx.fillStyle = '#fff';
+                 ctx.fillRect(x + 50 - 5, packetY, 10, 10);
+            } else {
+                 ctx.fillStyle = '#fff';
+                 ctx.fillRect(x - 5, packetY, 10, 10);
+            }
+        }
+        ctx.restore();
+    };
+
     const drawNoise = (t: number) => {
         // Generate scrolling scanlines
         const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
@@ -130,6 +205,8 @@ export default function DitherCanvas({ mode = 'city', intensity = 1.0, className
       // Draw Source
       if (mode === 'city') drawCity(time);
       if (mode === 'orb') drawOrb(time);
+      if (mode === 'net') drawNet(time);
+      if (mode === 'chip') drawChip(time);
       if (mode === 'noise') drawNoise(time);
 
       // DITHER ALGORITHM
@@ -155,19 +232,21 @@ export default function DitherCanvas({ mode = 'city', intensity = 1.0, className
         
         const val = avg > threshold ? 255 : 0;
 
-        // Apply Gold Tint in specific modes if brightness is high (modified to Replit Orange)
-        if (mode === 'city' && val === 255) {
-            data[i] = 242; // R #F26207
-            data[i + 1] = 98; // G
-            data[i + 2] = 7; // B
-        } else if (mode === 'orb' && val === 255 && Math.random() > 0.8) {
-            data[i] = 242; // R #F26207
-            data[i + 1] = 98; // G
-            data[i + 2] = 7; // B
+        // Apply Replit Orange Tint to high brightness pixels in 3D modes
+        if ((mode === 'city' || mode === 'orb' || mode === 'net' || mode === 'chip') && val === 255) {
+             // Randomize tint application for some noise/texture variation
+             if (mode === 'orb' && Math.random() < 0.2) {
+                // Keep some white sparkles in orb mode
+                data[i] = val;
+                data[i + 1] = val;
+                data[i + 2] = val;
+             } else {
+                data[i] = 242; // R #F26207
+                data[i + 1] = 98; // G
+                data[i + 2] = 7; // B
+             }
         } else {
-            // Basic 1-bit dither (Black/White) or blended with background
-            // We want it to be subtle background, so let's use low opacity white for 'on' pixels
-            // or keep it stark if desired. Given the complaint "fully gone", let's make it starker but use CSS opacity to blend.
+            // Standard dither
             data[i] = val;
             data[i + 1] = val;
             data[i + 2] = val;
