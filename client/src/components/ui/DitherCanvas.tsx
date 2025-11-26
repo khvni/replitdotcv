@@ -156,7 +156,11 @@ export default function DitherCanvas({ mode = 'city', intensity = 1.0, className
         const val = avg > threshold ? 255 : 0;
 
         // Apply Gold Tint in specific modes if brightness is high (modified to Replit Orange)
-        if (mode === 'orb' && val === 255 && Math.random() > 0.8) {
+        if (mode === 'city' && val === 255) {
+            data[i] = 242; // R #F26207
+            data[i + 1] = 98; // G
+            data[i + 2] = 7; // B
+        } else if (mode === 'orb' && val === 255 && Math.random() > 0.8) {
             data[i] = 242; // R #F26207
             data[i + 1] = 98; // G
             data[i + 2] = 7; // B
