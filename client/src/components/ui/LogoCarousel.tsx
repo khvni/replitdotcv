@@ -9,7 +9,7 @@ const logos = [
   { 
     name: "OPEN SV", 
     img: "/logos/opensv.png", 
-    url: "https://opensv.org" 
+    url: "https://www.opensvforum.org/2025" 
   },
   { 
     name: "Quora", 
@@ -108,8 +108,8 @@ function LogoItem({ logo }: { logo: { name: string, img: string, url: string } }
 
 export default function LogoCarousel() {
   return (
-    <div className="w-full py-6 border-t border-white/5">
-      <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 md:gap-x-12 md:gap-y-8 px-4 md:px-8 max-w-6xl mx-auto">
+    <div className="w-full py-4 border-t border-white/5">
+      <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-4 md:gap-x-10 md:gap-y-6 px-4 md:px-8 max-w-[90rem] mx-auto">
         {logos.map((logo, index) => (
           <div 
             key={`logo-${index}`} 
