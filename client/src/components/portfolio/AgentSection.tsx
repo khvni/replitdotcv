@@ -124,10 +124,8 @@ export default function AgentSection() {
 
             {/* Twitter Embed Side */}
             <div className="flex-1 w-full">
-              <div className="relative rounded-xl border border-white/20 bg-black/10 overflow-hidden shadow-2xl aspect-square max-w-md mx-auto md:mx-0 flex items-center justify-center p-2">
-                <div className="w-full h-full overflow-auto scrollbar-thin">
-                  <blockquote className="twitter-tweet" data-width="350" data-dnt="true"><p lang="en" dir="ltr">Just taught a vibe coding workshop using <a href="https://twitter.com/Replit?ref_src=twsrc%5Etfw">@Replit</a> to a class of ~20 middle schoolers<br/><br/>Never seen an entire group of kids become so excited about coding<br/><br/>Within 20 mins they were building apps like a 3D Minecraft clone, Flappy Bird but with Steve Harvey&#39;s face as the bird, Doom,… <a href="https://t.co/K5bxUMh13G">pic.twitter.com/K5bxUMh13G</a></p>&mdash; Ali Khani (@alikhvni) <a href="https://twitter.com/alikhvni/status/1913328421062758720?ref_src=twsrc%5Etfw">April 18, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-                </div>
+              <div className="relative rounded-xl border border-white/20 bg-black/10 shadow-2xl max-w-md mx-auto md:mx-0 flex items-center justify-center p-4">
+                <blockquote className="twitter-tweet" data-width="350" data-dnt="true"><p lang="en" dir="ltr">Just taught a vibe coding workshop using <a href="https://twitter.com/Replit?ref_src=twsrc%5Etfw">@Replit</a> to a class of ~20 middle schoolers<br/><br/>Never seen an entire group of kids become so excited about coding<br/><br/>Within 20 mins they were building apps like a 3D Minecraft clone, Flappy Bird but with Steve Harvey&#39;s face as the bird, Doom,… <a href="https://t.co/K5bxUMh13G">pic.twitter.com/K5bxUMh13G</a></p>&mdash; Ali Khani (@alikhvni) <a href="https://twitter.com/alikhvni/status/1913328421062758720?ref_src=twsrc%5Etfw">April 18, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
               </div>
             </div>
           </motion.div>
