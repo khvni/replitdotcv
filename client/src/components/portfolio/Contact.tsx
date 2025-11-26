@@ -31,7 +31,7 @@ export default function Contact() {
           
           <div className="flex flex-col sm:flex-row gap-6">
             <a 
-              href="mailto:ali@example.com" 
+              href="mailto:byalikhani@gmail.com" 
               className="bg-[#F26207] text-white font-mono font-bold text-lg px-8 py-4 rounded hover:bg-[#D95200] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 uppercase"
             >
               <Mail className="w-5 h-5" /> Email Me
