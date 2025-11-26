@@ -3,7 +3,7 @@ import Hero from "@/components/portfolio/Hero";
 import About from "@/components/portfolio/About"; 
 import AgentSection from "@/components/portfolio/AgentSection";
 import Contact from "@/components/portfolio/Contact";
-import ReplitBadge from "@/components/portfolio/ReplitBadge";
+// import ReplitBadge from "@/components/portfolio/ReplitBadge";
 // import Terminal from "@/components/portfolio/Terminal";
 import Footer from "@/components/portfolio/Footer";
 
@@ -20,7 +20,7 @@ export default function Home() {
 
       <Footer />
 
-      <ReplitBadge />
+      {/* <ReplitBadge /> */}
       {/* <Terminal /> */}
     </div>
   );
