@@ -2,6 +2,16 @@ import { useState } from "react";
 
 const logos = [
   { 
+    name: "Convoy", 
+    img: "/logos/convoy.png", 
+    url: "https://convoy.com" 
+  },
+  { 
+    name: "Five9", 
+    img: "/logos/five9.png", 
+    url: "https://five9.com" 
+  },
+  { 
     name: "OPEN SV", 
     img: "/logos/opensv.png", 
     url: "https://opensv.org" 
@@ -23,18 +33,23 @@ const logos = [
   },
   { 
     name: "SCET", 
-    img: "/logos/scet.png", 
+    img: "/logos/scet_new.png", 
     url: "https://scet.berkeley.edu" 
   },
   { 
     name: "TEDx", 
-    img: "/logos/tedx.png", 
+    img: "/logos/tedx_new.png", 
     url: "https://www.ted.com/tedx/events/64065" 
   },
   { 
     name: "Berkeley CS", 
-    img: "/logos/berkeley.png", 
+    img: "/logos/cs61b_bee.png", 
     url: "https://sp23.datastructur.es" 
+  },
+  { 
+    name: "UC Berkeley", 
+    img: "/logos/berkeley_seal.png", 
+    url: "https://berkeley.edu" 
   },
   { 
     name: "MHMA", 
@@ -58,7 +73,7 @@ const logos = [
   },
   { 
     name: "Cal AMPD", 
-    img: "/logos/ampd.png", 
+    img: "/logos/ampd_new.png", 
     url: "https://www.instagram.com/calampd" 
   },
 ];
@@ -72,7 +87,7 @@ function LogoItem({ logo }: { logo: { name: string, img: string, url: string } }
         href={logo.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-white font-mono text-sm font-bold whitespace-nowrap hover:text-[#F26207] transition-colors"
+        className="text-white font-mono text-xs font-bold whitespace-nowrap hover:text-[#F26207] transition-colors"
       >
         {logo.name}
       </a>
@@ -89,7 +104,7 @@ function LogoItem({ logo }: { logo: { name: string, img: string, url: string } }
       <img 
         src={logo.img} 
         alt={logo.name} 
-        className="w-auto h-auto max-h-16 md:max-h-24 max-w-[180px] object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-all duration-300"
+        className="w-auto h-auto max-h-10 md:max-h-14 max-w-[140px] object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-all duration-300"
         onError={() => setError(true)}
       />
     </a>
@@ -98,8 +113,8 @@ function LogoItem({ logo }: { logo: { name: string, img: string, url: string } }
 
 export default function LogoCarousel() {
   return (
-    <div className="w-full py-8 border-t border-white/5">
-      <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 md:gap-x-20 md:gap-y-12 px-4 md:px-12 max-w-7xl mx-auto">
+    <div className="w-full py-6 border-t border-white/5">
+      <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 md:gap-x-12 md:gap-y-8 px-4 md:px-8 max-w-6xl mx-auto">
         {logos.map((logo, index) => (
           <div 
             key={`logo-${index}`} 
