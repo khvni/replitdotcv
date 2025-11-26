@@ -94,7 +94,7 @@ export default function Hero() {
 
         {/* Trusted By Logos */}
         <div className="w-full mt-8">
-          <p className="text-xl md:text-2xl text-white font-bold uppercase tracking-wider font-mono mb-4 opacity-90">Trusted By:</p>
+          <p className="text-xl md:text-2xl text-white font-bold uppercase tracking-wider font-mono mb-4 opacity-90 text-center">Trusted By:</p>
           <LogoCarousel />
         </div>
 
