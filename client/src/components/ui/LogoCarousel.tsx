@@ -2,14 +2,9 @@ import { useState } from "react";
 
 const logos = [
   { 
-    name: "Convoy", 
-    img: "/logos/convoy.png", 
-    url: "https://convoy.com" 
-  },
-  { 
-    name: "Five9", 
-    img: "/logos/five9.png", 
-    url: "https://five9.com" 
+    name: "MTC", 
+    img: "/logos/mtc.png", 
+    url: "https://mtc.so" 
   },
   { 
     name: "OPEN SV", 
@@ -17,39 +12,14 @@ const logos = [
     url: "https://opensv.org" 
   },
   { 
-    name: "MTC", 
-    img: "/logos/mtc.png", 
-    url: "https://mtc.so" 
-  },
-  { 
-    name: "TechWadi", 
-    img: "/logos/techwadi.png", 
-    url: "https://techwadi.org" 
-  },
-  { 
     name: "Quora", 
     img: "/logos/quora.png", 
     url: "https://www.quora.com/profile/Allen-Kinney" 
   },
   { 
-    name: "SCET", 
-    img: "/logos/scet_new.png", 
-    url: "https://scet.berkeley.edu" 
-  },
-  { 
     name: "TEDx", 
     img: "/logos/tedx_new.png", 
     url: "https://www.ted.com/tedx/events/64065" 
-  },
-  { 
-    name: "Berkeley CS", 
-    img: "/logos/cs61b_bee.png", 
-    url: "https://sp23.datastructur.es" 
-  },
-  { 
-    name: "UC Berkeley", 
-    img: "/logos/berkeley_seal.png", 
-    url: "https://berkeley.edu" 
   },
   { 
     name: "MHMA", 
@@ -62,19 +32,44 @@ const logos = [
     url: "https://www.instagram.com/p/DFogJ7Bvovn" 
   },
   { 
-    name: "Apex YPS", 
-    img: "/logos/apex.png", 
-    url: "https://apexmosque.org/yps2025/" 
-  },
-  { 
     name: "Cal Muslim Alumni", 
     img: "/logos/cma.png", 
     url: "https://calmuslimalumni.org" 
   },
   { 
+    name: "Five9", 
+    img: "/logos/five9.png", 
+    url: "https://five9.com" 
+  },
+  { 
+    name: "Convoy", 
+    img: "/logos/convoy.png", 
+    url: "https://convoy.com" 
+  },
+  { 
+    name: "Berkeley CS", 
+    img: "/logos/cs61b_bee.png", 
+    url: "https://sp23.datastructur.es" 
+  },
+  { 
+    name: "SCET", 
+    img: "/logos/scet_vertical.png", 
+    url: "https://scet.berkeley.edu" 
+  },
+  { 
     name: "Cal AMPD", 
-    img: "/logos/ampd_new.png", 
+    img: "/logos/ampd_white.png", 
     url: "https://www.instagram.com/calampd" 
+  },
+  { 
+    name: "TechWadi", 
+    img: "/logos/techwadi.png", 
+    url: "https://techwadi.org" 
+  },
+  { 
+    name: "Apex YPS", 
+    img: "/logos/apex.png", 
+    url: "https://apexmosque.org/yps2025/" 
   },
 ];
 
