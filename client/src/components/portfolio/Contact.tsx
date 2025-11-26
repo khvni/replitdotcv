@@ -14,7 +14,7 @@ export default function Contact() {
       <DitherCanvas mode="orb" className="opacity-30 mix-blend-screen" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="bg-[#1B252B] border border-white/10 rounded-lg p-12 md:p-24 text-center max-w-4xl mx-auto shadow-2xl">
+        <div className="bg-[#0e1525] border border-white/10 rounded-lg p-12 md:p-24 text-center max-w-4xl mx-auto shadow-2xl">
           
           <div className="inline-block bg-[#F26207]/10 text-[#F26207] border border-[#F26207]/20 font-mono font-bold px-4 py-1 mb-8 uppercase tracking-widest text-sm rounded-full">
             Status: Available

@@ -49,7 +49,7 @@ export default function Navbar() {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 border-b-2 ${
-        isScrolled ? "bg-[#0B1419] border-[#F26207] py-3" : "bg-[#0B1419]/80 backdrop-blur-md border-transparent py-5"
+        isScrolled ? "bg-[#0e1525] border-[#F26207] py-3" : "bg-[#0e1525]/80 backdrop-blur-md border-transparent py-5"
       }`}
       onMouseLeave={() => setActiveDropdown(null)}
     >
@@ -143,7 +143,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0B1419] border-b-2 border-[#F26207] overflow-hidden absolute top-full left-0 right-0 shadow-2xl"
+            className="md:hidden bg-[#0e1525] border-b-2 border-[#F26207] overflow-hidden absolute top-full left-0 right-0 shadow-2xl"
           >
             <div className="container mx-auto px-6 py-8 flex flex-col space-y-6">
               {navStructure.map((item) => (
