@@ -66,15 +66,17 @@ export default function Hero() {
                   <Typewriter
                     options={{
                       strings: [
+                        "racked up 6M+ views writing on Quora as a teen.",
+                        "taught CS to 3,000+ Berkeley students.",
+                        "worked in product security, DevOps, & SWE.",
                         "built a national movement from scratch.",
-                        "teaches 1800+ students with empathy.",
-                        "ships AI demos in hours, not weeks.",
-                        "actually understands the stack."
+                        "has spoken at various conferences.",
+                        "ships AI demos and POCs in hours.",
                       ],
                       autoStart: true,
                       loop: true,
                       delay: 50,
-                      deleteSpeed: 30,
+                      deleteSpeed: 20,
                     }}
                   />
                 </span>
