@@ -84,12 +84,12 @@ function LogoItem({ logo }: { logo: { name: string, img: string, url: string } }
       href={logo.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block w-full h-full flex items-center justify-center overflow-hidden"
+      className="block w-full h-full flex items-center justify-center overflow-visible"
     >
       <img 
         src={logo.img} 
         alt={logo.name} 
-        className="max-h-none max-w-none h-[150%] w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-all duration-300"
+        className="w-auto h-auto max-h-16 md:max-h-24 max-w-[180px] object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-all duration-300"
         onError={() => setError(true)}
       />
     </a>
@@ -98,32 +98,16 @@ function LogoItem({ logo }: { logo: { name: string, img: string, url: string } }
 
 export default function LogoCarousel() {
   return (
-    <div className="w-full overflow-hidden relative z-20 py-8 border-t border-white/5">
-      {/* Gradient Masks Removed */}
-
-      <div className="flex w-[200%] animate-scroll hover:pause">
-        {/* First Set */}
-        <div className="flex w-1/2 justify-around items-center gap-16 px-6">
-          {logos.map((logo, index) => (
-            <div 
-              key={`logo-1-${index}`} 
-              className="relative group flex items-center justify-center h-16 w-32"
-            >
-              <LogoItem logo={logo} />
-            </div>
-          ))}
-        </div>
-        {/* Duplicate Set for Infinite Loop */}
-        <div className="flex w-1/2 justify-around items-center gap-16 px-6">
-          {logos.map((logo, index) => (
-            <div 
-              key={`logo-2-${index}`} 
-              className="relative group flex items-center justify-center h-16 w-32"
-            >
-              <LogoItem logo={logo} />
-            </div>
-          ))}
-        </div>
+    <div className="w-full py-8 border-t border-white/5">
+      <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 md:gap-x-20 md:gap-y-12 px-4 md:px-12 max-w-7xl mx-auto">
+        {logos.map((logo, index) => (
+          <div 
+            key={`logo-${index}`} 
+            className="flex items-center justify-center"
+          >
+            <LogoItem logo={logo} />
+          </div>
+        ))}
       </div>
     </div>
   );

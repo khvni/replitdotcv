@@ -93,7 +93,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Trusted By Logos */}
-        <div className="w-full max-w-full mt-12">
+        <div className="w-full mt-12">
           <p className="text-xl md:text-2xl text-[#F26207] font-bold uppercase tracking-wider font-mono mb-8 opacity-90">Trusted By:</p>
           <LogoCarousel />
         </div>
