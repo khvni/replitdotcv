@@ -29,7 +29,7 @@ const logos = [
   { 
     name: "MHMA", 
     img: "/logos/icna.png", 
-    url: "https://icnawestconvention.org/" 
+    url: "https://mhma.us/" 
   },
   { 
     name: "Manara West", 
