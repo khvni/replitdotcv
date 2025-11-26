@@ -47,8 +47,8 @@ export default function Navbar() {
       }`}
       onMouseLeave={() => setActiveDropdown(null)}
     >
-      <div className="w-full px-4 md:px-8 relative flex items-center justify-between">
-        <div className="flex-shrink-0 w-48">
+      <div className="w-full max-w-2xl mx-auto px-6 relative flex items-center justify-between">
+        <div className="flex-shrink-0">
           <Link href="/" className="flex items-center gap-3 group z-50 relative">
              <div className="h-8 w-8 bg-[#F26207] flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform">
                <span className="font-bold text-black font-mono text-lg">AK</span>
@@ -76,7 +76,7 @@ export default function Navbar() {
             </Link>
           ))}
 
-        <div className="hidden md:flex justify-end flex-shrink-0 w-48">
+        <div className="hidden md:flex justify-end flex-shrink-0">
           <a 
             href="mailto:byalikhani@gmail.com"
             className="bg-transparent text-[#F26207] border-2 border-[#F26207] hover:bg-[#F26207] hover:text-white font-bold text-sm px-6 py-2 rounded-none transition-all font-mono uppercase tracking-wider flex items-center gap-2"
