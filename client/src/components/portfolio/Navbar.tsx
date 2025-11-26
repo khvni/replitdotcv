@@ -41,7 +41,7 @@ export default function Navbar() {
       }`}
       onMouseLeave={() => setActiveDropdown(null)}
     >
-      <div className="container mx-auto px-6 relative flex items-center justify-between">
+      <div className="w-full px-4 md:px-8 relative flex items-center justify-between">
         <div className="flex-shrink-0 w-48">
           <Link href="/" className="flex items-center gap-3 group z-50 relative">
              <div className="h-8 w-8 bg-[#F26207] flex items-center justify-center transform -rotate-12 group-hover:rotate-0 transition-transform">
