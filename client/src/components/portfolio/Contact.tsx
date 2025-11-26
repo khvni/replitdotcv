@@ -21,12 +21,12 @@ export default function Contact() {
           </div>
 
           <GlitchHeader 
-            text="Ready to Ship?" 
+            text="I want to build at Replit." 
             className="text-5xl md:text-7xl font-display font-bold mb-8 text-white tracking-tight uppercase leading-none text-left"
           />
           
           <p className="text-xl md:text-2xl text-[#AEBEC7] mb-12 font-sans leading-relaxed text-left">
-            I want to build at Replit. Let's skip the fluff and deploy.
+            I've seen firsthand how software, and the education to leverage its power, can terraform society for the better when in the right hands.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6">

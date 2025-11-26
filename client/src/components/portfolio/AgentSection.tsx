@@ -1,23 +1,23 @@
 import { motion } from "framer-motion";
 import GlitchHeader from "../ui/GlitchHeader";
 
-import abstractOrange from "@assets/generated_images/abstract_geometric_shapes_in_orange_and_black.png";
-import abstractData from "@assets/generated_images/abstract_digital_data_flow.png";
-import abstractArch from "@assets/generated_images/abstract_architectural_tech_structure.png";
-import abstractCode from "@assets/generated_images/abstract_code_visualization.png";
-import abstractNet from "@assets/generated_images/abstract_network_connection.png";
+import mtcImage from "@assets/mtc_speaking.JPG";
+import aiImage from "@assets/ai_coding.JPG";
+import sweImage from "@assets/tech_event.JPG";
+import teachingImage from "@assets/cs61b_teaching.jpg";
+import speakingImage from "@assets/formal_speaking.jpg";
 
 const features = [
   {
-    title: "Building a national movement—and a community to go with it—through MTC.",
-    description: "Built MTC to 30+ chapters. Connected thousands of builders. No playbook, just execution.",
-    image: abstractOrange,
+    title: "Building North America's largest Muslim tech ecosystem with MTC.",
+    description: "I founded MTC as a club in Berkeley to build solutions for local businesses, teach tech to youth, and help accelerate our members' career growth. In 2 years I've scaled it to 30+ universities in the US, and launched city chapters in SF, Seattle, Dallas, and NYC for founders, builders, & operators. We've also had Replit as a sponsor for hackathons at several of our chapters!",
+    image: mtcImage,
     link: "https://mtc.so",
   },
   {
     title: "Shipping at the speed of AI.",
     description: "I'm no stranger to AI: I've shipped fast using Cursor, Replit, Claude Code, OpenAI Codex, Gemini, Cline, Windsurf, v0, Grok, you name it. There's something magical seeing so many ideas become reality in mere hours. Lately I've been been tinkering with voice agents and browser agents.",
-    image: abstractData,
+    image: aiImage,
     link: "https://github.com/khvni",
   },
   {
@@ -28,13 +28,13 @@ const features = [
       <a href="https://withbloom.app/techwadi" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">Bloom</a>
       {" "}to solve conference networking at TechWadi's Annual Forum 2025. (Amjad spoke there!) Before that, I worked in AppSec & DevSecOps at Five9 triaging vulnerabilities across 15 product engineering codebases, and before that I interned as a full-stack SWE at Convoy helping stop double-brokering and theft cases.
     </>),
-    image: abstractArch,
+    image: sweImage,
     link: "/make",
   },
   {
     title: "I'm both a lifelong teacher and a lifelong learner.",
     description: "In high school, I wrote on Quora and garnered 6M+ views on my content. In college, I taught 3000+ students in Berkeley's two largest CS courses, creating content & slides to support our students in CS 61A & 61B's notoriously difficult projects. In MTC, I've created documentation, hosted office hours, and mentored leaders.",
-    image: abstractCode, 
+    image: teachingImage, 
     link: "/teach",
   },
   {
@@ -55,7 +55,7 @@ const features = [
         <a href="https://manarawest.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">MSA West's 26th Annual Conference</a> in San Francisco.
       </>
     ),
-    image: abstractNet,
+    image: speakingImage,
     link: "/connect",
   }
 ];
@@ -118,7 +118,7 @@ export default function AgentSection() {
               />
 
               <div className="text-lg text-white/80 leading-relaxed mb-8 max-w-lg font-sans">
-                Teaching 20 middle schoolers to ship apps in 20 minutes isn't just good pedagogy—it's proof that the right tools unlock creativity at any age. When kids build Minecraft clones and Flappy Bird remixes featuring Steve Harvey, you know you've found something that works.
+                Never in human history has a classroom of middle schoolers been excited to do anything related to coding. I created & taught one of the first vibe coding workshops EVER to get kids to see the power of tech outside of writing rote for/while loops and basic algebra. My little sister got into coding by herself pre-2023 with Replit's Python turtle graphics templates; now, she brags to her classmates that she was on Replit before it was cool.
               </div>
             </div>
 
