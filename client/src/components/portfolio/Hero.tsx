@@ -33,9 +33,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-[#fdfdfd] mb-12 max-w-2xl font-sans text-left w-full"
+            className="text-2xl md:text-3xl text-[#fdfdfd] mb-12 max-w-2xl font-sans text-left w-full"
           >
-            Introducing <a href="http://replit.com/@khni" target="_blank" rel="noopener noreferrer" className="font-bold text-[#f9c041] hover:opacity-80 transition-opacity">Ali Khani</a>.
+            Introducing <span className="font-bold text-white">Ali Khani</span>.
           </motion.p>
         </div>
 
@@ -52,9 +52,6 @@ export default function Hero() {
                 <div className="px-3 py-1 rounded-full bg-[#2B323B] text-xs font-medium text-[#AEBEC7] flex items-center gap-2">
                   <Sparkles className="w-3 h-3 text-[#F26207]" /> 
                   Get suggestions
-                </div>
-                <div className="px-3 py-1 rounded-full bg-transparent text-xs font-medium text-[#5D6C76] border border-[#2B323B]">
-                  Write a prompt
                 </div>
               </div>
            </div>
