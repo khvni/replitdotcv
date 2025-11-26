@@ -108,16 +108,34 @@ function LogoItem({ logo }: { logo: { name: string, img: string, url: string } }
 
 export default function LogoCarousel() {
   return (
-    <div className="w-full py-2 border-t border-white/5">
-      <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 md:gap-x-8 md:gap-y-4 px-4 md:px-8 max-w-[90rem] mx-auto">
-        {logos.map((logo, index) => (
-          <div 
-            key={`logo-${index}`} 
-            className="flex items-center justify-center"
-          >
-            <LogoItem logo={logo} />
-          </div>
-        ))}
+    <div className="w-full overflow-hidden relative z-20 py-8 border-t border-white/5">
+      {/* Gradient Masks */}
+      <div className="absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-[#0B1419] to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-[#0B1419] to-transparent z-10 pointer-events-none" />
+
+      <div className="flex w-[200%] animate-scroll hover:pause">
+        {/* First Set */}
+        <div className="flex w-1/2 justify-around items-center gap-12 px-6">
+          {logos.map((logo, index) => (
+            <div 
+              key={`logo-1-${index}`} 
+              className="relative group flex items-center justify-center h-12 w-32"
+            >
+              <LogoItem logo={logo} />
+            </div>
+          ))}
+        </div>
+        {/* Duplicate Set for Infinite Loop */}
+        <div className="flex w-1/2 justify-around items-center gap-12 px-6">
+          {logos.map((logo, index) => (
+            <div 
+              key={`logo-2-${index}`} 
+              className="relative group flex items-center justify-center h-12 w-32"
+            >
+              <LogoItem logo={logo} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
