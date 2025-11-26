@@ -27,27 +27,27 @@ const features = [
     link: "/make",
   },
   {
-    title: "As much of a lifelong teacher as I am a lifelong learner.",
-    description: "In high school, I wrote on Quora and garnered 6M+ views on my content. In college, I taught 3000+ students in Berkeley's two largest CS courses, creating content & slides to support our students in CS 61A & 61B's notoriously difficult projects. In MTC, I've created hundreds of pages of documentation, hosted office hours to advise chapters, and mentored new leaders directly. As AI takes over a lot of data-heavy tasks, I see writing, creativity, and good taste becoming exponentially more valuable.",
+    title: "I'm both a lifelong teacher and a lifelong learner.",
+    description: "In high school, I wrote on Quora and garnered 6M+ views on my content. In college, I taught 3000+ students in Berkeley's two largest CS courses, creating content & slides to support our students in CS 61A & 61B's notoriously difficult projects. In MTC, I've created documentation, hosted office hours, and mentored leaders.",
     image: abstractCode, 
     link: "/teach",
   },
   {
-    title: "Past Speaking Engagements",
+    title: "Public speaking and experience on-stage.",
     description: (
       <>
-        I've been a vibe coding evangelist since Karpathy first coined the term. I've had various speaking engagements in the past few years, including{" "}
-        <a href="https://www.opensvforum.org/2024" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">OPEN SV in 2024</a>
+        I've had various speaking engagements in the past few years at multiple conferences (some with national & international recognition), including at OPEN SV in{" "}
+        <a href="https://www.opensvforums.org/af2024/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">2024</a>
         {" "}and{" "}
         <a href="https://www.opensvforum.org/2025" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">2025</a>
         ,{" "}
-        <a href="https://icnawestconvention.org/speakers/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">ICNA West Convention 2025</a>
+        <a href="https://icnawestconvention.org/speakers/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">ICNA West</a>
         , my{" "}
         <a href="https://www.ted.com/tedx/events/64065" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">TEDx talk</a>
-        , my{" "}
-        <a href="https://apexmosque.org/yps2025/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">Entrepreneurship 101 workshop at Apex Mosque's NC Young Professionals Summit</a>
+        , the{" "}
+        <a href="https://apexmosque.org/yps2025/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">NC Young Professionals Summit</a>
         {" "}in Raleigh, and at{" "}
-        <a href="https://msawest.net" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">MSA West's 26th Annual Conference</a>.
+        <a href="https://manarawest.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">MSA West's 26th Annual Conference</a> in San Francisco.
       </>
     ),
     image: abstractNet,
@@ -103,18 +103,33 @@ export default function AgentSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex justify-center mt-32"
+            className="flex flex-col items-center gap-12 md:gap-24 md:flex-row"
           >
-            <div className="max-w-2xl w-full">
-              <blockquote className="twitter-tweet" data-theme="dark">
-                <p lang="en" dir="ltr">
-                  Just taught a vibe coding workshop using <a href="https://twitter.com/Replit?ref_src=twsrc%5Etfw">@Replit</a> to a class of ~20 middle schoolers<br/><br/>
-                  Never seen an entire group of kids become so excited about coding<br/><br/>
-                  Within 20 mins they were building apps like a 3D Minecraft clone, Flappy Bird but with Steve Harvey&#39;s face as the bird, Doom,… <a href="https://t.co/K5bxUMh13G">pic.twitter.com/K5bxUMh13G</a>
-                </p>
-                &mdash; Ali Khani (@alikhvni) <a href="https://twitter.com/alikhvni/status/1913328421062758720?ref_src=twsrc%5Etfw">April 18, 2025</a>
-              </blockquote>
-              <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+            {/* Text Side */}
+            <div className="flex-1 w-full text-left text-white">
+              <GlitchHeader 
+                text="Vibe coding evangelist since Karpathy first coined the term." 
+                className="text-3xl md:text-4xl font-semibold text-white mb-4 tracking-tight" 
+              />
+
+              <div className="text-lg text-white/80 leading-relaxed mb-8 max-w-lg font-sans">
+                Teaching 20 middle schoolers to ship apps in 20 minutes isn't just good pedagogy—it's proof that the right tools unlock creativity at any age. When kids build Minecraft clones and Flappy Bird remixes featuring Steve Harvey, you know you've found something that works.
+              </div>
+            </div>
+
+            {/* Twitter Embed Side */}
+            <div className="flex-1 w-full">
+              <div className="relative rounded-xl border border-white/20 bg-black/10 overflow-hidden shadow-2xl aspect-square max-w-md mx-auto md:mx-0 flex items-center justify-center p-4">
+                <blockquote className="twitter-tweet" data-theme="dark">
+                  <p lang="en" dir="ltr">
+                    Just taught a vibe coding workshop using <a href="https://twitter.com/Replit?ref_src=twsrc%5Etfw">@Replit</a> to a class of ~20 middle schoolers<br/><br/>
+                    Never seen an entire group of kids become so excited about coding<br/><br/>
+                    Within 20 mins they were building apps like a 3D Minecraft clone, Flappy Bird but with Steve Harvey&#39;s face as the bird, Doom,… <a href="https://t.co/K5bxUMh13G">pic.twitter.com/K5bxUMh13G</a>
+                  </p>
+                  &mdash; Ali Khani (@alikhvni) <a href="https://twitter.com/alikhvni/status/1913328421062758720?ref_src=twsrc%5Etfw">April 18, 2025</a>
+                </blockquote>
+                <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+              </div>
             </div>
           </motion.div>
         </div>
