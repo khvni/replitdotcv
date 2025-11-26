@@ -17,7 +17,7 @@ export default function Contact() {
         <div className="bg-[#0e1525] border border-white/10 rounded-lg p-12 md:p-24 w-full max-w-2xl shadow-2xl">
           
           <div className="inline-block bg-[#F26207]/10 text-[#F26207] border border-[#F26207]/20 font-mono font-bold px-4 py-1 mb-8 uppercase tracking-widest text-sm rounded-full">
-            Status: Available
+            Systems: Online
           </div>
 
           <GlitchHeader 
@@ -26,7 +26,7 @@ export default function Contact() {
           />
           
           <p className="text-xl md:text-2xl text-[#AEBEC7] mb-12 font-sans leading-relaxed text-left">
-            I want to build at Replit. I've seen firsthand how software and the education to leverage its power can terraform society for the better when in the right hands.
+            I want to build at Replit. I've seen firsthand how software and the education to leverage its power can terraform society for the better.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6">
