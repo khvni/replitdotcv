@@ -1,0 +1,88 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Helvetica",
+      "role": "body"
+    },
+    {
+      "family": "Arial",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#61B043",
+    "accent": "#2F86EB",
+    "background": "#EEEEEE",
+    "textPrimary": "#2F86EB",
+    "link": "#2F86EB"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Helvetica",
+      "heading": "Helvetica"
+    },
+    "fontStacks": {
+      "heading": [
+        "Helvetica",
+        "sans-serif"
+      ],
+      "body": [
+        "Helvetica",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Helvetica",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "17.6px",
+      "h2": "35.2px",
+      "body": "17.6px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "components": {
+    "input": {
+      "borderColor": "#CCCCCC",
+      "borderRadius": "3px"
+    }
+  },
+  "images": {
+    "logo": "File saved at: attached_assets/logo.png",
+    "favicon": "File saved at: attached_assets/favicon.png",
+    "ogImage": null
+  },
+  "__framework_hints": [],
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "The only button present has a light background color (#F5F5F5), which does not qualify as a vibrant or saturated color for a primary CTA. There are no other buttons to compare for a primary action."
+    },
+    "secondary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "There is only one button available, and it cannot serve as a secondary button since it does not have a different background color from a primary button. Therefore, no secondary button can be identified."
+    },
+    "confidence": 0.5
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "students and tech enthusiasts interested in data structures and algorithms."
+  },
+  "designSystem": {
+    "framework": "unknown",
+    "componentLibrary": null
+  },
+  "confidence": {
+    "buttons": 0.5,
+    "colors": 0.8,
+    "overall": 0.65
+  }
+}

@@ -92,4 +92,24 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#F26207] to-[#FF8C42];
   }
+  .font-pixel {
+    font-family: var(--font-pixel);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.hover\:pause:hover {
+  animation-play-state: paused;
 }

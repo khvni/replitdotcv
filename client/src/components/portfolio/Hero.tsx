@@ -4,23 +4,9 @@ import Typewriter from "typewriter-effect";
 import StaticBackground from "../ui/StaticBackground";
 import DitherCanvas from "../ui/DitherCanvas";
 import GlitchHeader from "../ui/GlitchHeader";
+import LogoCarousel from "../ui/LogoCarousel";
 
 export default function Hero() {
-  const logos = [
-    { name: "OPEN SV", url: "https://opensv.org" },
-    { name: "MTC", url: "https://mtc.so" },
-    { name: "UC Berkeley", url: "https://sp23.datastructur.es" },
-    { name: "SCET", url: "https://scet.berkeley.edu" },
-    { name: "TechWadi", url: "https://techwadi.org" },
-    { name: "TEDx", url: "https://www.ted.com/tedx/events/64065" },
-    { name: "Quora", url: "https://www.quora.com/profile/Allen-Kinney" },
-    { name: "ICNA Bay Area", url: "https://icnawestconvention.org/" },
-    { name: "Manara West", url: "https://www.instagram.com/p/DFogJ7Bvovn" },
-    { name: "Apex YPS", url: "https://apexmosque.org/yps2025/" },
-    { name: "Cal Muslim Alumni", url: "https://calmuslimalumni.org" },
-    { name: "Cal AMPD", url: "https://www.instagram.com/calampd" },
-  ];
-
   return (
     <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-32 pb-20 bg-[#0B1419]">
       {/* Dither Background (Towers) */}
@@ -107,21 +93,9 @@ export default function Hero() {
         </motion.div>
 
         {/* Trusted By Logos */}
-        <div className="w-full max-w-5xl mx-auto">
-          <p className="text-sm text-[#F26207] mb-6 font-medium uppercase tracking-wider font-mono">Trusted By:</p>
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 opacity-80">
-            {logos.map((logo, index) => (
-              <a 
-                key={index} 
-                href={logo.url} 
-                target="_blank" 
-                rel="noreferrer"
-                className="text-white hover:text-[#f9c041] transition-colors font-medium text-sm md:text-base flex items-center gap-2 font-mono"
-              >
-                {logo.name}
-              </a>
-            ))}
-          </div>
+        <div className="w-full max-w-full mt-12">
+          <p className="text-sm text-[#F26207] font-bold uppercase tracking-wider font-mono mb-8 opacity-80">Trusted By:</p>
+          <LogoCarousel />
         </div>
 
       </div>

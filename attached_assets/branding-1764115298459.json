@@ -1,0 +1,136 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Roboto",
+      "role": "body"
+    },
+    {
+      "family": "Segoe UI",
+      "role": "body"
+    },
+    {
+      "family": "Helvetica Neue",
+      "role": "body"
+    },
+    {
+      "family": "Oxygen-Sans",
+      "role": "body"
+    },
+    {
+      "family": "Ubuntu",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#195FAA",
+    "accent": "#2E69FF",
+    "background": "#FFFFFF",
+    "textPrimary": "#636466",
+    "link": "#2E69FF"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Roboto",
+      "heading": "Roboto"
+    },
+    "fontStacks": {
+      "heading": [
+        "-apple-system",
+        "system-ui",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Oxygen-Sans",
+        "Ubuntu",
+        "Cantarell",
+        "Helvetica Neue",
+        "sans-serif"
+      ],
+      "body": [
+        "-apple-system",
+        "system-ui",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Oxygen-Sans",
+        "Ubuntu",
+        "Cantarell",
+        "Helvetica Neue",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "-apple-system",
+        "system-ui",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Oxygen-Sans",
+        "Ubuntu",
+        "Cantarell",
+        "Helvetica Neue",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "15px",
+      "h2": "15px",
+      "body": "15px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 8,
+    "borderRadius": "8px"
+  },
+  "components": {
+    "input": {
+      "borderColor": "#CCCCCC",
+      "borderRadius": "8px"
+    },
+    "buttonPrimary": {
+      "background": "#2E69FF",
+      "textColor": "#282829",
+      "borderRadius": "1000px",
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#FFFFFF",
+      "textColor": "#282829",
+      "borderRadius": "1000px",
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "File saved at: attached_assets/logo.png",
+    "favicon": "File saved at: attached_assets/favicon.ico",
+    "ogImage": "File saved at: attached_assets/ogImage.png"
+  },
+  "__framework_hints": [],
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 1,
+      "text": "Login",
+      "reasoning": "Button #1 has a vibrant blue background (#2E69FF), which is a strong indicator of being the primary CTA. It also has action-oriented text 'Login', making it the main call-to-action."
+    },
+    "secondary": {
+      "index": 0,
+      "text": "Sign up with email",
+      "reasoning": "Button #0 has a white background (#FFFFFF), which is less prominent compared to the vibrant blue of Button #1. It serves as a secondary action for signing up, making it the secondary button."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "general public, knowledge seekers, and professionals"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": null
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  }
+}

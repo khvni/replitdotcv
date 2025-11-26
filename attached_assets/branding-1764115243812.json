@@ -1,0 +1,101 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Montserrat",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#2D9196",
+    "accent": "#46A6AA",
+    "background": "#FFFFFF",
+    "textPrimary": "#1A1B1F",
+    "link": "#46A6AA"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Montserrat",
+      "heading": "Montserrat"
+    },
+    "fontStacks": {
+      "heading": [
+        "Montserrat",
+        "sans-serif"
+      ],
+      "body": [
+        "Montserrat",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Montserrat",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "45px",
+      "h2": "35px",
+      "body": "19px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 8,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "input": {
+      "borderColor": "#CCCCCC",
+      "borderRadius": "0px"
+    },
+    "buttonPrimary": {
+      "background": "#46A6AA",
+      "textColor": "#FFFFFF",
+      "borderRadius": "7px",
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#963681",
+      "textColor": "#FFFFFF",
+      "borderRadius": "7px",
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "File saved at: attached_assets/logo.png",
+    "favicon": "File saved at: attached_assets/favicon.png",
+    "ogImage": "File saved at: attached_assets/ogImage.png"
+  },
+  "__framework_hints": [],
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Logo 0 is the only one that visually represents the brand name 'TechWadi' and is located in the header, linking to the homepage, making it the most suitable choice.",
+    "confidence": 0.9
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 1,
+      "text": "DONATE TO TECHWADI",
+      "reasoning": "Button 1 ('DONATE TO TECHWADI') has a vibrant blue background (#46A6AA) which is a strong indicator for a primary CTA. It is action-oriented and stands out as a call to action."
+    },
+    "secondary": {
+      "index": 0,
+      "text": "GET INVOLVED",
+      "reasoning": "Button 0 ('GET INVOLVED') has a vibrant red/orange background (#963681) but is less action-oriented compared to Button 1. It serves as a secondary action due to its different color group and less prominent nature."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "tech enthusiasts and community members interested in technology and innovation."
+  },
+  "designSystem": {
+    "framework": "unknown",
+    "componentLibrary": null
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  }
+}
