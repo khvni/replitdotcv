@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import GlitchHeader from "../ui/GlitchHeader";
 
-import mtcImage from "@assets/mtc_speaking.JPG";
+import mtcImage from "@assets/mtc_group_photo.jpg";
 import aiImage from "@assets/ai_coding.JPG";
 import sweImage from "@assets/tech_event.JPG";
 import teachingImage from "@assets/cs61b_teaching.jpg";
