@@ -54,7 +54,7 @@ const logos = [
   { 
     name: "Berkeley CS", 
     img: "/logos/cs61b_bee.png", 
-    url: "https://sp23.datastructur.es" 
+    url: "https://sp23.datastructur.es/staff.html" 
   },
   { 
     name: "SCET", 
