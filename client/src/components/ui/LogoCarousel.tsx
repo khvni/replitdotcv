@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 
 const logos = [
   { name: "OPEN SV", url: "https://logo.clearbit.com/opensv.org" },
@@ -15,6 +15,27 @@ const logos = [
   { name: "Cal AMPD", url: "/logos/ampd.png" },
 ];
 
+function LogoItem({ logo }: { logo: { name: string, url: string } }) {
+  const [error, setError] = useState(false);
+
+  if (error) {
+    return (
+      <div className="text-white font-mono text-sm font-bold whitespace-nowrap" style={{ fontFamily: 'monospace', fontSize: '14px', fontWeight: 'bold' }}>
+        {logo.name}
+      </div>
+    );
+  }
+
+  return (
+    <img 
+      src={logo.url} 
+      alt={logo.name} 
+      className="max-h-full max-w-full object-contain brightness-0 invert"
+      onError={() => setError(true)}
+    />
+  );
+}
+
 export default function LogoCarousel() {
   return (
     <div className="w-full overflow-hidden relative z-20 py-8 border-t border-white/5">
@@ -30,20 +51,7 @@ export default function LogoCarousel() {
               key={`logo-1-${index}`} 
               className="relative group flex items-center justify-center h-12 w-32 opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
             >
-              <img 
-                src={logo.url} 
-                alt={logo.name} 
-                className="max-h-full max-w-full object-contain brightness-0 invert"
-                onError={(e) => {
-                    // Fallback to text if image fails
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerText = logo.name;
-                    e.currentTarget.parentElement!.style.color = 'white';
-                    e.currentTarget.parentElement!.style.fontFamily = 'monospace';
-                    e.currentTarget.parentElement!.style.fontSize = '14px';
-                    e.currentTarget.parentElement!.style.fontWeight = 'bold';
-                }}
-              />
+              <LogoItem logo={logo} />
             </div>
           ))}
         </div>
@@ -54,19 +62,7 @@ export default function LogoCarousel() {
               key={`logo-2-${index}`} 
               className="relative group flex items-center justify-center h-12 w-32 opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
             >
-              <img 
-                src={logo.url} 
-                alt={logo.name} 
-                className="max-h-full max-w-full object-contain brightness-0 invert"
-                onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerText = logo.name;
-                    e.currentTarget.parentElement!.style.color = 'white';
-                    e.currentTarget.parentElement!.style.fontFamily = 'monospace';
-                    e.currentTarget.parentElement!.style.fontSize = '14px';
-                    e.currentTarget.parentElement!.style.fontWeight = 'bold';
-                }}
-              />
+              <LogoItem logo={logo} />
             </div>
           ))}
         </div>

@@ -87,10 +87,8 @@ export default function Navbar() {
                   {item.name} <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? "rotate-180" : ""}`} />
                 </button>
               ) : (
-                <Link href={item.href || "#"}>
-                  <a className="text-sm font-bold text-[#AEBEC7] hover:text-[#F26207] px-2 py-1 transition-all font-mono uppercase tracking-wide">
-                    {item.name}
-                  </a>
+                <Link href={item.href || "#"} className="text-sm font-bold text-[#AEBEC7] hover:text-[#F26207] px-2 py-1 transition-all font-mono uppercase tracking-wide">
+                  {item.name}
                 </Link>
               )}
 
@@ -105,10 +103,8 @@ export default function Navbar() {
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     {item.items.map((subItem) => (
-                      <Link key={subItem.name} href={subItem.href}>
-                        <a className="block px-4 py-2 text-sm text-[#AEBEC7] hover:text-white hover:bg-[#2B323B] font-mono uppercase transition-colors">
-                          {subItem.name}
-                        </a>
+                      <Link key={subItem.name} href={subItem.href} className="block px-4 py-2 text-sm text-[#AEBEC7] hover:text-white hover:bg-[#2B323B] font-mono uppercase transition-colors">
+                        {subItem.name}
                       </Link>
                     ))}
                   </motion.div>
@@ -154,18 +150,14 @@ export default function Navbar() {
                          {item.name}
                        </span>
                        {item.items?.map((subItem) => (
-                         <Link key={subItem.name} href={subItem.href}>
-                           <a className="text-lg font-medium text-[#AEBEC7] hover:text-[#F26207] font-mono uppercase pl-4 block">
-                             {subItem.name}
-                           </a>
+                         <Link key={subItem.name} href={subItem.href} className="text-lg font-medium text-[#AEBEC7] hover:text-[#F26207] font-mono uppercase pl-4 block">
+                           {subItem.name}
                          </Link>
                        ))}
                      </>
                    ) : (
-                     <Link href={item.href || "#"}>
-                        <a className="text-2xl font-bold text-left text-white hover:text-[#F26207] font-mono uppercase">
-                          {item.name}
-                        </a>
+                     <Link href={item.href || "#"} className="text-2xl font-bold text-left text-white hover:text-[#F26207] font-mono uppercase">
+                       {item.name}
                      </Link>
                    )}
                 </div>
