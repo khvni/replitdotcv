@@ -99,7 +99,7 @@ function LogoItem({ logo }: { logo: { name: string, img: string, url: string } }
       <img 
         src={logo.img} 
         alt={logo.name} 
-        className="w-auto h-auto max-h-10 md:max-h-14 max-w-[140px] object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-all duration-300"
+        className="w-auto h-auto max-h-8 md:max-h-10 max-w-[120px] object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-all duration-300"
         onError={() => setError(true)}
       />
     </a>
@@ -108,8 +108,8 @@ function LogoItem({ logo }: { logo: { name: string, img: string, url: string } }
 
 export default function LogoCarousel() {
   return (
-    <div className="w-full py-4 border-t border-white/5">
-      <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-4 md:gap-x-10 md:gap-y-6 px-4 md:px-8 max-w-[90rem] mx-auto">
+    <div className="w-full py-2 border-t border-white/5">
+      <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 md:gap-x-8 md:gap-y-4 px-4 md:px-8 max-w-[90rem] mx-auto">
         {logos.map((logo, index) => (
           <div 
             key={`logo-${index}`} 
