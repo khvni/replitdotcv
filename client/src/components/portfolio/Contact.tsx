@@ -13,8 +13,8 @@ export default function Contact() {
       {/* Dither Background (Orb for differentiation) */}
       <DitherCanvas mode="orb" className="opacity-30 mix-blend-screen" />
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="bg-[#0e1525] border border-white/10 rounded-lg p-12 md:p-24 text-center max-w-4xl mx-auto shadow-2xl">
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl flex flex-col items-center">
+        <div className="bg-[#0e1525] border border-white/10 rounded-lg p-12 md:p-24 w-full max-w-2xl shadow-2xl">
           
           <div className="inline-block bg-[#F26207]/10 text-[#F26207] border border-[#F26207]/20 font-mono font-bold px-4 py-1 mb-8 uppercase tracking-widest text-sm rounded-full">
             Status: Available
@@ -22,14 +22,14 @@ export default function Contact() {
 
           <GlitchHeader 
             text="Ready to Ship?" 
-            className="text-5xl md:text-7xl font-display font-bold mb-8 text-white tracking-tight uppercase leading-none"
+            className="text-5xl md:text-7xl font-display font-bold mb-8 text-white tracking-tight uppercase leading-none text-left"
           />
           
-          <p className="text-xl md:text-2xl text-[#AEBEC7] mb-12 font-sans max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-[#AEBEC7] mb-12 font-sans leading-relaxed text-left">
             I want to build at Replit. Let's skip the fluff and deploy.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6">
             <a 
               href="mailto:ali@example.com" 
               className="bg-[#F26207] text-white font-mono font-bold text-lg px-8 py-4 rounded hover:bg-[#D95200] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 uppercase"
