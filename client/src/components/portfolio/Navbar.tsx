@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Mail } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 
-const navStructure = [
+type NavItem = {
+  name: string;
+  type: "link";
+  href: string;
+};
+
+const navStructure: NavItem[] = [
   { 
     name: "Make", 
     type: "link",
@@ -61,44 +67,13 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center justify-center gap-8 flex-1">
           {navStructure.map((item) => (
-            <div 
+            <Link 
               key={item.name} 
-              className="relative group"
-              onMouseEnter={() => item.type === 'dropdown' && setActiveDropdown(item.name)}
+              href={item.href}
+              className="text-sm font-bold text-[#AEBEC7] hover:text-[#F26207] px-2 py-1 transition-all font-mono uppercase tracking-wide"
             >
-              {item.type === 'dropdown' ? (
-                <button 
-                  className={`flex items-center gap-1 text-sm font-bold hover:text-[#F26207] px-2 py-1 transition-all font-mono uppercase tracking-wide ${
-                    activeDropdown === item.name ? "text-[#F26207]" : "text-[#AEBEC7]"
-                  }`}
-                >
-                  {item.name} <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? "rotate-180" : ""}`} />
-                </button>
-              ) : (
-                <Link href={item.href || "#"} className="text-sm font-bold text-[#AEBEC7] hover:text-[#F26207] px-2 py-1 transition-all font-mono uppercase tracking-wide">
-                  {item.name}
-                </Link>
-              )}
-
-              {/* Dropdown Menu */}
-              <AnimatePresence>
-                {activeDropdown === item.name && item.items && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-[#1C232B] border border-[#2B323B] shadow-xl rounded-lg overflow-hidden py-2 z-50"
-                    onMouseLeave={() => setActiveDropdown(null)}
-                  >
-                    {item.items.map((subItem) => (
-                      <Link key={subItem.name} href={subItem.href} className="block px-4 py-2 text-sm text-[#AEBEC7] hover:text-white hover:bg-[#2B323B] font-mono uppercase transition-colors">
-                        {subItem.name}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+              {item.name}
+            </Link>
           ))}
 
         <div className="hidden md:flex justify-end flex-shrink-0 w-48">
@@ -131,24 +106,13 @@ export default function Navbar() {
           >
             <div className="container mx-auto px-6 py-8 flex flex-col space-y-6">
               {navStructure.map((item) => (
-                <div key={item.name} className="flex flex-col space-y-2">
-                   {item.type === 'dropdown' ? (
-                     <>
-                       <span className="text-2xl font-bold text-left text-white font-mono uppercase border-b border-white/10 pb-2 mb-2">
-                         {item.name}
-                       </span>
-                       {item.items?.map((subItem) => (
-                         <Link key={subItem.name} href={subItem.href} className="text-lg font-medium text-[#AEBEC7] hover:text-[#F26207] font-mono uppercase pl-4 block">
-                           {subItem.name}
-                         </Link>
-                       ))}
-                     </>
-                   ) : (
-                     <Link href={item.href || "#"} className="text-2xl font-bold text-left text-white hover:text-[#F26207] font-mono uppercase">
-                       {item.name}
-                     </Link>
-                   )}
-                </div>
+                <Link 
+                  key={item.name} 
+                  href={item.href}
+                  className="text-2xl font-bold text-left text-white hover:text-[#F26207] font-mono uppercase"
+                >
+                  {item.name}
+                </Link>
               ))}
               
               <a 
