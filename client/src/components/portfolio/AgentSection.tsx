@@ -16,13 +16,18 @@ const features = [
   },
   {
     title: "Shipping at the speed of AI.",
-    description: "I'm no stranger to AI: I've shipped fast using Cursor, Replit, Claude Code, OpenAI Codex, Gemini, Cline, Windsurf, v0, Grok, you name it. There's something magical seeing so many ideas become reality in mere hours.",
+    description: "I'm no stranger to AI: I've shipped fast using Cursor, Replit, Claude Code, OpenAI Codex, Gemini, Cline, Windsurf, v0, Grok, you name it. There's something magical seeing so many ideas become reality in mere hours. Lately I've been been tinkering with voice agents and browser agents.",
     image: abstractData,
     link: "https://github.com/khvni",
   },
   {
-    title: "Experimental by nature, with experience in SWE, infra, & security.",
-    description: "Founded Bloom to solve conference networking at TechWadi's Annual Forum 2025. (Amjad spoke there!) Before that, I worked in AppSec & DevSecOps at Five9 and full-stack SWE at Convoy.",
+    title: "Experience in SWE, infra, & security.",
+    description: (
+      <>
+        Founded{" "}
+      <a href="https://withbloom.app/techwadi" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/100 transition-colors">Bloom</a>
+      {" "}to solve conference networking at TechWadi's Annual Forum 2025. (Amjad spoke there!) Before that, I worked in AppSec & DevSecOps at Five9 triaging vulnerabilities across 15 product engineering codebases, and before that I interned as a full-stack SWE at Convoy helping stop double-brokering and theft cases.
+    </>),
     image: abstractArch,
     link: "/make",
   },
