@@ -14,27 +14,30 @@ export default function Hero() {
       {/* TV Static Background Effect (Overlay) */}
       <StaticBackground />
 
-      <div className="container relative z-20 px-6 text-center max-w-7xl mx-auto flex flex-col items-center">
+      <div className="container relative z-20 px-6 max-w-7xl mx-auto flex flex-col items-center">
         
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6"
-        >
-          <GlitchHeader 
-            text="The search for your next DevRel ends here." 
-            className="text-4xl md:text-6xl font-bold tracking-tight text-white" 
-          />
-        </motion.div>
+        {/* Content Container with Max Width matching the Card */}
+        <div className="w-full max-w-2xl flex flex-col items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 text-left w-full"
+          >
+            <GlitchHeader 
+              text="The search for your next DevRel ends here." 
+              className="text-4xl md:text-6xl font-bold tracking-tight text-white" 
+            />
+          </motion.div>
 
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-xl text-[#fdfdfd] mb-12 max-w-2xl font-sans"
-        >
-          Introducing <span className="font-bold text-white">Ali Khani</span>.
-        </motion.p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-[#fdfdfd] mb-12 max-w-2xl font-sans text-left w-full"
+          >
+            Introducing <span className="font-bold text-white">Ali Khani</span>.
+          </motion.p>
+        </div>
 
         {/* Replit Prompt Simulation */}
         <motion.div 
