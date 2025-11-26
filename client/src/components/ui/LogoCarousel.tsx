@@ -22,6 +22,11 @@ const logos = [
     url: "https://www.ted.com/tedx/events/64065" 
   },
   { 
+    name: "ICNA West", 
+    img: "/logos/icna_west.png", 
+    url: "https://icnawestconvention.org/speakers/" 
+  },
+  { 
     name: "MHMA", 
     img: "/logos/icna.png", 
     url: "https://icnawestconvention.org/" 
