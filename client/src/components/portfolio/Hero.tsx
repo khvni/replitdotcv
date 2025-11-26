@@ -35,7 +35,7 @@ export default function Hero() {
             transition={{ delay: 0.1 }}
             className="text-xl text-[#fdfdfd] mb-12 max-w-2xl font-sans text-left w-full"
           >
-            Introducing <span className="font-bold text-white">Ali Khani</span>.
+            Introducing <a href="http://replit.com/@khni" target="_blank" rel="noopener noreferrer" className="font-bold text-[#f9c041] hover:opacity-80 transition-opacity">Ali Khani</a>.
           </motion.p>
         </div>
 
